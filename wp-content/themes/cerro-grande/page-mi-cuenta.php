@@ -2,7 +2,8 @@
 <?php 
 $current_user = wp_get_current_user();
 $ID = $current_user->ID;
-$follow_ups = $wpdb->get_results("SELECT follow_up_id, subject, social_reason, solicitor_name, last_name FROM follow_ups WHERE user_id =".$ID);
+$follow_ups = $wpdb->get_results("SELECT follow_up_id, subject, status_id, social_reason, solicitor_name, last_name FROM follow_ups WHERE user_id =".$ID);
+$statuses = $wpdb->get_results("SELECT * FROM statuses");
 ?>
 <div class="registro wrapper">
     <div class="container spacing">
@@ -25,10 +26,11 @@ $follow_ups = $wpdb->get_results("SELECT follow_up_id, subject, social_reason, s
                     <table style="width: 100%;">
                         <colgroup>
                             <col style="width: 10%;">
-                            <col style="width: 25%;">
-                            <col style="width: 25%;">
-                            <col style="width: 25%;">
-                            <col style="width: 15%;">
+                            <col style="width: 20%;">
+                            <col style="width: 20%;">
+                            <col style="width: 20%;">
+                            <col style="width: 20%;">
+                            <col style="width: 10%;">
                         </colgroup>
                         <thead>
                             <tr>
@@ -41,6 +43,9 @@ $follow_ups = $wpdb->get_results("SELECT follow_up_id, subject, social_reason, s
                                 </th>
                                 <th>
                                     <h2>Nombre</h2>
+                                </th>
+                                <th>
+                                    <h2>Estatus</h2>
                                 </th>
                                 <th></th>
                             </tr>
@@ -60,7 +65,14 @@ $follow_ups = $wpdb->get_results("SELECT follow_up_id, subject, social_reason, s
                                     <p class="text no-margin"><?php echo $follow_up->social_reason ?></p>
                                 </td>
                                 <td>
-                                    <p class="text no-margin"><?php echo $follow_up->name.' '.$follow_up->last_name ?></p>
+                                    <p class="text no-margin"><?php echo $follow_up->solicitor_name.' '.$follow_up->last_name ?></p>
+                                </td>
+                                <td>
+                                    <p class="text no-margin">
+                                        <?php
+                                //  something something join to get status name, crap
+                                        ?>
+                                    </p>
                                 </td>
                                 <td>
                                     <a class="center-block" href="<?php echo home_url() . '/seguimiento/?id=' . $follow_up->follow_up_id; ?>">Ver Seguimiento</a>

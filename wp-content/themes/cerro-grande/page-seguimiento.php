@@ -8,27 +8,23 @@ $follow_ups = $follow_ups[0];
 if($follow_ups->user_id != $ID) {
     $follow_ups = [];
 }
-$payment_status = $wpdb->get_results("SELECT post_status FROM wp_posts JOIN follow_ups ON wp_posts.ID = follow_ups.wp_post_id WHERE wp_posts.ID =  '".$follow_ups->wp_post_id."'");
-$payment_status = $payment_status[0];
-$solicitud = get_bloginfo('template_url').'/img/seguimiento/';
-$proceso = get_bloginfo('template_url').'/img/seguimiento/';
-$registro = get_bloginfo('template_url').'/img/seguimiento/';
+$folder = get_bloginfo('template_url').'/img/seguimiento/';
 
 switch( $follow_ups->status_id ) {
     case 1:
-        $solicitud = $solicitud.'proceso-active.png';
-        $proceso = $proceso.'pausa.png';
-        $registro = $registro.'concluido.png';
+        $solicitud = $folder.'proceso-active.png';
+        $proceso = $folder.'pausa.png';
+        $registro = $folder.'concluido.png';
         break;
     case 2:
-        $solicitud = $solicitud.'proceso.png';
-        $proceso = $proceso.'pausa-active.png';
-        $registro = $registro.'concluido.png';
+        $solicitud = $folder.'proceso.png';
+        $proceso = $folder.'pausa-active.png';
+        $registro = $folder.'concluido.png';
         break;
     case 3:
-        $solicitud = $solicitud.'proceso.png';
-        $proceso = $proceso.'pausa.png';
-        $registro = $registro.'concluido-active.png';
+        $solicitud = $folder.'proceso.png';
+        $proceso = $folder.'pausa.png';
+        $registro = $folder.'concluido-active.png';
         break;
 }
 ?>
@@ -58,9 +54,13 @@ switch( $follow_ups->status_id ) {
                 </div>
             </div>
             <div class="row light-spacing">
+               <label for="subject">Asunto</label>
+                <p class="text" id="subject">
+                    <?php echo $follow_ups->subject; ?>
+                </p>
                 <h3 class="blue text-center">Información del Solicitante</h3>
-                <table>
-                    <thead class="white">
+                <table style="width: 100%">
+                    <thead>
                         <tr>
                             <th>Nombre</th>
                             <th>Razón Social</th>
@@ -81,8 +81,8 @@ switch( $follow_ups->status_id ) {
                 </table>
                 <div style="margin: 10px 0;" class="center-block"></div>
                 <h3 class="blue text-center">Domicilio del Solicitante</h3>
-                <table>
-                    <thead class="white">
+                <table style="width: 100%">
+                    <thead>
                         <tr>
                             <th>Calle</th>
                             <th>Número Exterior</th>
@@ -93,14 +93,14 @@ switch( $follow_ups->status_id ) {
                     <tbody class="text">
                         <tr>
                             <td><?php echo $follow_ups->street; ?></td>
-                            <td><?php echo $follow_ups->ext_num; ?></td>
-                            <td><?php echo $follow_ups->int_num; ?></td>
+                            <td><?php echo $follow_ups->exterior_num; ?></td>
+                            <td><?php echo $follow_ups->interior_num; ?></td>
                             <td><?php echo $follow_ups->postal_code; ?></td>
                         </tr>
                     </tbody>
                 </table>
-                <table>
-                    <thead class="white">
+                <table style="width: 100%">
+                    <thead>
                         <tr>
                             <th>Colonia</th>
                             <th>Municipio</th>
