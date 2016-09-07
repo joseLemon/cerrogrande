@@ -9,8 +9,12 @@
         <link rel="stylesheet" href="<?php echo bloginfo('template_url').'/';?>css/jquery.fullPage.css">
         <link rel="stylesheet" href="<?php echo bloginfo('template_url').'/';?>css/effect1.css" />
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="<?php echo bloginfo('stylesheet_url');?>">
         <script src="<?php echo bloginfo('template_url').'/';?>js/pre-loader/modernizr.custom.js"></script>
+        <script src="<?php echo bloginfo('template_url').'/';?>js/jquery-1.12.0.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-default navbar-fixed-top <?php if(is_front_page()) { echo 'front-nav'; } ?>" style="display:none">

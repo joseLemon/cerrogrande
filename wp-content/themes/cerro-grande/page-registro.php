@@ -6,6 +6,24 @@
             <div role="tabpanel" class="form-container light-spacing tab-pane fade in active" id="registro">
                 <h1 class="header blue text-center">Formato de Solicitud</h1>
                 <div class="row">
+                    <div class="col-sm-6">
+                        <label for="user_id">Cliente</label>
+                        <select name="user_id" id="user">
+                            <?php $users = $wpdb->get_results("SELECT ID, user_login FROM wp_users");
+                            foreach($users as $user){ ?>
+                            <option value="<?php echo $user->ID ?>">
+                                <?php 
+                                echo $user->user_login;
+                                ?>
+                            </option>
+                            <?php }?>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="subject">Asunto</label><input type="text" name="subject" id="subject">
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-sm-3 ">
                         <label for="solicitor_name">Nombre(s)</label><input type="text" id="solicitor_name" name="solicitor_name">
                     </div>
@@ -96,59 +114,34 @@
                     <div class="col-sm-2 ">
                         <label for="country">País</label>
                         <select id="country" name="country">
-                            <option value="Mxico">México</option>
+                            <option value="México">México</option>
                         </select>
                     </div>
                 </div>
-                <h1 class="header blue text-center">Texto de Ejemplo para registrar</h1>
                 <div class="row">
+                    <!--<div class="col-sm-6">
+<label for="status">Estatus</label>
+<select name="status" id="status">
+<?php $statuses = $wpdb->get_results("SELECT status_id, name FROM statuses");
+foreach($statuses as $status){ ?>
+<option value="<?php echo $status->brand_type_id ?>"><?php echo $status->name ?></option>
+<?php }?>
+</select>
+</div>
+-->
                     <div class="col-sm-12">
+                        <label for="text">Comentarios</label>
                         <textarea name="text" id="text" cols="30" rows="10"></textarea>
                     </div>
                 </div>
                 <div class="nav" role="tablist">
-                    <!--<a id="validationOne" href="" onclick="validateOne()" class="btn btn-primary center-block text-center smoothScroll" aria-controls="marca" role="tab" data-toggle="tab">Siguiente</a>-->
                     <input class="black btn center-block" type="submit" name="submit" id="submit" value="Guardar">
-                </div>
-            </div>
-
-            <div role="tabpanel" class="form-container spacing tab-pane fade" id="marca">
-                <h1 class="header blue text-center">Texto de Ejemplo para registrar</h1>
-                <div class="row">
-                    <!--<div class="col-sm-6">
-<label for="options">Opciones</label>
-<select name="options" id="options">
-<?php $brands = $wpdb->get_results("SELECT brand_type_id, name FROM brand_types");
-foreach($brands as $brand){ ?>
-<option value="<?php echo $brand->brand_type_id ?>"><?php echo $brand->name ?></option>
-<?php }?>
-</select>
-<label for="option"></label>
-<label class="marca-margin" for="attach">Adjunta tu logotipo</label>
-<input type="file" name="design" id="design_upload" class="inputfile">
-<label for="design_upload" id="design"></label>
-<input type="file" name="three_dimensional" id="three_dimensional_upload" class="inputfile">
-<label for="three_dimensional_upload" id="three_dimensional"></label>
-</div>
-<div class="col-sm-6">
-<label for="text">Denominación o texto de tu marca</label>
-<textarea class="hidden" name="text" id="text" cols="30" rows="10"></textarea>
-</div>
--->
-                    <div class="col-sm-12">
-                        <textarea name="text" id="text" cols="30" rows="10"></textarea>
-                    </div>
-                </div>
-                <div class="row nav" role="tablist">
-                    <div class="col-sm-6">
-                        <a href="#registro" class="white green-btn small-btn center-block text-center smoothScroll" aria-controls="registro" role="tab" data-toggle="tab">Anterior</a>
-                    </div>
-                    <div class="col-sm-6">
-                        <a id="validationTwo" onclick="validateTwo()" href="" class="white green-btn small-btn center-block text-center smoothScroll" aria-controls="giro" role="tab" data-toggle="tab">Siguiente</a>
-                    </div>
                 </div>
             </div>
         </form>
     </div>
 </div>
+<script>
+    $('#user').select2();
+</script>
 <?php get_footer(); ?>

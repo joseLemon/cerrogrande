@@ -15,8 +15,6 @@
             </div>
         </div>
         
-        <script src="<?php echo bloginfo('template_url').'/';?>js/jquery-1.12.0.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
         <script src="<?php echo bloginfo('template_url').'/';?>js/bootstrap.min.js"></script>
         <script src="<?php echo bloginfo('template_url').'/';?>js/scrolloverflow.js"></script>
         <script src="<?php echo bloginfo('template_url').'/';?>js/jquery.fullPage.js"></script>

@@ -30,6 +30,7 @@ body {
 
 .wrapper {
     overflow: hidden;
+    min-height: 100vh;
 }
 
 section {
@@ -398,6 +399,7 @@ h3.heading {
 .navbar {
     border-bottom: 1px solid #959595;
     background-color: #f4f4f4;
+    margin: 0;
 }
 
 .navbar .navbar-header {
@@ -1241,7 +1243,7 @@ footer {
     margin: 0;
 }
 
-.form-container input[type="text"], .form-container select, .form-container textarea, .blue-input, #respond textarea, .woocommerce-billing-fields input[type=text], .woocommerce-billing-fields input[type=email], .woocommerce-billing-fields select, .woocommerce-billing-fields input[type=tel],
+.form-container input[type="text"], .form-container select, .select2, .form-container textarea, .blue-input, #respond textarea, .woocommerce-billing-fields input[type=text], .woocommerce-billing-fields input[type=email], .woocommerce-billing-fields select, .woocommerce-billing-fields input[type=tel],
 .login-username input, .login-password input, .input-blue {
     font-size: 14px;
     color: #979797;
@@ -1252,6 +1254,26 @@ footer {
     padding-left: 15px;
     outline: none;
     margin-bottom: 30px;
+}
+
+.select2 {
+    padding: 0;
+    width: 100%!important;
+}
+
+.select2-selection {
+    height: 55px!important;
+    border: 0!important;
+}
+
+.select2-selection__rendered {
+    height: 55px;
+    line-height: 55px!important;
+    padding-left: 15px!important;
+}
+
+.select2-selection__arrow {
+    height: 55px!important;
 }
 
 .marca-margin {

@@ -4,14 +4,20 @@ $date = date('Y-m-d',strtotime($_POST['date']));
 $current_user = wp_get_current_user();
 $ID = $current_user->ID;
 $array = [];
-
-if ( isset($_POST['submit']) ) {
-    $wpdb->query("INSERT INTO `registra_wp2016`.`brands` (`brand_id`, `brand_type_id`, `text`, `design`, `three_dimensional`, `business_course`, `product_type`, `bussiness_course_description`, `brand_first_use_date`, `status_id`, `first_time`, `user_id`, `street`, `ext_num`, `int_num`, `postal_code`, `colony`, `town`, `locality`, `state`, `country`, `b_street`, `b_ext_num`, `b_int_num`, `b_postal_code`, `b_colony`, `b_town`, `b_locality`, `b_state`, `b_country`, `name`, `last_name`, `m_last_name`, `social_reason`, `birthday`, `phone`, `email`, `created_at`  ) VALUES (NULL, ".$array['options'].", '".$array['text']."', '".$array['design']."', '".$array['three_dimensional']."', '".$array['business_course']."', '".$array['product_course']."', '".$array['description']."', '$b_date', '3', 1, '".$ID."', '".$array['street']."', '".$array['exterior']."', '".$array['interior']."', ".$array['postal'].", '".$array['colony']."', '".$array['town']."', '".$array['locality']."', '".$array['state']."', '".$array['country']."', '".$array['b_street']."', '".$array['b_exterior']."', '".$array['b_interior']."', ".$array['b_postal'].", '".$array['b_colony']."', '".$array['b_town']."', '".$array['b_locality']."', '".$array['b_state']."', '".$array['b_country']."', '".$array['solicitor_name']."', '".$array['last_name']."', '".$array['m_last_name']."', '".$array['social']."', '$date', '".$array['phone']."', '".$array['email']."', '".date('Y-m-d H:i:s')."');");
-} else if( isset($_POST['submit_revision']) ) {
-    $wpdb->query("INSERT INTO `registra_wp2016`.`brands` (`brand_id`, `brand_type_id`, `text`, `design`, `three_dimensional`, `business_course`, `product_type`, `bussiness_course_description`, `brand_first_use_date`, `status_id`, `first_time`, `user_id`, `street`, `ext_num`, `int_num`, `postal_code`, `colony`, `town`, `locality`, `state`, `country`, `b_street`, `b_ext_num`, `b_int_num`, `b_postal_code`, `b_colony`, `b_town`, `b_locality`, `b_state`, `b_country`, `name`, `last_name`, `m_last_name`, `social_reason`, `birthday`, `phone`, `email`, `created_at`  ) VALUES (NULL, ".$array['options'].", '".$array['text']."', '".$array['design']."', '".$array['three_dimensional']."', '".$array['business_course']."', '".$array['product_course']."', '".$array['description']."', '$b_date', '0', 1, '".$ID."', '".$array['street']."', '".$array['exterior']."', '".$array['interior']."', ".$array['postal'].", '".$array['colony']."', '".$array['town']."', '".$array['locality']."', '".$array['state']."', '".$array['country']."', '".$array['b_street']."', '".$array['b_exterior']."', '".$array['b_interior']."', ".$array['b_postal'].", '".$array['b_colony']."', '".$array['b_town']."', '".$array['b_locality']."', '".$array['b_state']."', '".$array['b_country']."', '".$array['solicitor_name']."', '".$array['last_name']."', '".$array['m_last_name']."', '".$array['social']."', '$date', '".$array['phone']."', '".$array['email']."', '".date('Y-m-d H:i:s')."');");
-} else if( isset($_POST['submit_cambiar']) ) {
-    $wpdb->query("UPDATE  `registra_wp2016`.`brands` SET  `text` =  '".$array['text']."', `status_id` = '0', `first_time` =  '2', `created_at` = '".date('Y-m-d H:i:s')."' WHERE  `brands`.`brand_id` =".$brand_id.";");
+foreach( $_POST as $key => $P) {
+    $array[$key] = $_POST[$key];
 }
+
+$wpdb->query(
+    "INSERT INTO `wp_cerro_grande`.`follow_ups` (`follow_up_id`, `user_id`, `status_id`, `subject` `solicitor_name`, `last_name`, `m_last_name`, `social_reason`, `birthday`, `phone`, `email`, `street`, `exterior_num`, `interior_num`, `postal_code`,
+     `colony`, `town`, `locality`, `state`, `country`, `comments`, `created_at` ) VALUES (NULL, ".$array['user_id'].", '1', '".$array['subject']."', '".$array['solicitor_name']."', '".$array['last_name']."', '".$array['m_last_name']."', '".$array['social']."', '".$array['date'].
+    "', '".$array['phone']."', '".$array['email']."', '".$array['street']."', '".$array['exterior']."', ".$array['interior'].", '".$array['postal']."', '".$array['colony']."', '".$array['town']."', ".$array['locality'].
+    ", '".$array['state']."', '".$array['country']."', '".$array['text']."', '".date('Y-m-d H:i:s')."');"
+);
+
+print_r($array);
+
+return true;
 
 if( isset($_POST['submit_cambiar']) ) {
     $target_dir = dirname(__FILE__).'/uploads/';
