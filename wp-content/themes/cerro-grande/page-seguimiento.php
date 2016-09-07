@@ -28,12 +28,9 @@ switch( $follow_ups->status_id ) {
         break;
 }
 ?>
-<div class="wrapper registro seguimiento">
+<div class="wrapper registro seguimiento spacing">
     <div class="container">
-        <div class="form-container active spacing">
-            <div class="info">
-                <a href=""><img src="<?php echo bloginfo('template_url'); ?>/img/icons/info.png" alt=""></a>
-            </div>
+        <div class="form-container active light-spacing">
             <h1 class="header blue text-center">Seguimiento</h1>
             <div class="row text-center margin-bottom">
                 <div class="col-sm-4 margin-top">
@@ -54,11 +51,11 @@ switch( $follow_ups->status_id ) {
                 </div>
             </div>
             <div class="row light-spacing">
-               <label for="subject">Asunto</label>
-                <p class="text" id="subject">
+                <h3>Asunto</h3>
+                <p>
                     <?php echo $follow_ups->subject; ?>
                 </p>
-                <h3 class="blue text-center">Información del Solicitante</h3>
+                <h3>Información del Solicitante</h3>
                 <table style="width: 100%">
                     <thead>
                         <tr>
@@ -80,7 +77,7 @@ switch( $follow_ups->status_id ) {
                     </tbody>
                 </table>
                 <div style="margin: 10px 0;" class="center-block"></div>
-                <h3 class="blue text-center">Domicilio del Solicitante</h3>
+                <h3>Domicilio del Solicitante</h3>
                 <table style="width: 100%">
                     <thead>
                         <tr>
@@ -119,8 +116,8 @@ switch( $follow_ups->status_id ) {
                         </tr>
                     </tbody>
                 </table>
-                <h3 class="blue text-center">Comentarios</h3>
-                <textarea name="" id="" cols="30" rows="10" readonly><?php echo $follow_ups->comments; ?></textarea>
+                <h3>Información Adicional</h3>
+                <p><?php echo $follow_ups->comments; ?></p>
             </div>
         </div>
     </div>

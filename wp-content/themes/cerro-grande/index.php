@@ -143,7 +143,7 @@
                                     Mercantiles, Negociaciones, 
                                     Políticas Públicas y Gobierno.
                                     <br><br>
-                                    <span class="italic">luis.holguin@cerrograndecorp.com.mx</span>
+                                    <a href="mailto:luis@cerrogrande.law" class="italic">luis@cerrogrande.law</a>
                                 </p>
                             </li>
                         </ul>
@@ -177,7 +177,7 @@
                                     confidencialidad y protección de 
                                     datos personales.
                                     <br><br>
-                                    <span class="italic">jaarguello@cerrograndecorp.com.mx</span>
+                                    <a href="mailto:jose@cerrogrande.law" class="italic">jose@cerrogrande.law</a>
                                 </p>
                             </li>
                         </ul>
@@ -209,7 +209,7 @@
                                     negociación de patentes mexicanas 
                                     y extranjeras.
                                     <br><br>
-                                    <span class="italic">j.beltran@cerrograndecorp.com.mx</span>
+                                    <a href="mailto:jorge@cerrogrande.law" class="italic">jorge@cerrogrande.law</a>
                                 </p>
                             </li>
                         </ul>
@@ -240,7 +240,7 @@
                                     públicos y privados a nivel nacional 
                                     e internacional.
                                     <br><br>
-                                    <span class="italic">hcarbajal@cerrograndecorp.com.mx</span>
+                                    <a href="mailto:humberto@cerrogrande.law" class="italic">humberto@cerrogrande.law</a>
                                 </p>
                             </li>
                         </ul>
@@ -672,7 +672,7 @@
                 <img src="<?php echo bloginfo('template_url').'/';?>img/contacto/office.png" alt="Contact Image" class="decoration vertical-align">
             </div>
             <div class="contacto light-spacing container">
-                <h3 class="heading">CONTACTO</h1>
+                <h3 class="heading">CONTACTO</h3>
                 <div class="col-sm-5">
                     <div class="address slide-left">
                         Lázaro de Baigorri 1400<br>
@@ -683,7 +683,7 @@
                         Tel (614) 415 94 79
                     </div>
                     <div class="mail slide-left">
-                        info@cerrograndecorp.com.mx
+                        <a href="mailto:info@cerrogrande.law">info@cerrogrande.law</a>
                     </div>
                     <div class="social slide-left">
                         <a href="https://twitter.com/cerrograndecorp" target="_blank"><img src="<?php echo bloginfo('template_url').'/';?>img/social-media/twitter3.png" alt="twitter"></a>
@@ -692,10 +692,7 @@
                     </div>
                 </div>
                 <div class="col-sm-7 slide-right">
-                    <input type="text" placeholder="Nombre">
-                    <input type="email" placeholder="Correo">
-                    <textarea name="" id="" cols="30" rows="5" placeholder="Mensaje"></textarea>
-                    <input type="submit" value="ENVIAR">
+                    <?php echo do_shortcode('[contact-form-7 id="29" title="Forma de Contacto"]') ?>
                 </div>
             </div>
         </section>

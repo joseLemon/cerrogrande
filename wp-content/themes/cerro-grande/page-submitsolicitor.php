@@ -8,16 +8,12 @@ foreach( $_POST as $key => $P) {
     $array[$key] = $_POST[$key];
 }
 
-$wpdb->query(
-    "INSERT INTO `wp_cerro_grande`.`follow_ups` (`follow_up_id`, `user_id`, `status_id`, `subject` `solicitor_name`, `last_name`, `m_last_name`, `social_reason`, `birthday`, `phone`, `email`, `street`, `exterior_num`, `interior_num`, `postal_code`,
-     `colony`, `town`, `locality`, `state`, `country`, `comments`, `created_at` ) VALUES (NULL, ".$array['user_id'].", '1', '".$array['subject']."', '".$array['solicitor_name']."', '".$array['last_name']."', '".$array['m_last_name']."', '".$array['social']."', '".$array['date'].
-    "', '".$array['phone']."', '".$array['email']."', '".$array['street']."', '".$array['exterior']."', ".$array['interior'].", '".$array['postal']."', '".$array['colony']."', '".$array['town']."', ".$array['locality'].
-    ", '".$array['state']."', '".$array['country']."', '".$array['text']."', '".date('Y-m-d H:i:s')."');"
-);
+$query = "INSERT INTO `wp_cerro_grande`.`follow_ups` (`follow_up_id`, `user_id`, `status_id`, `subject`, `solicitor_name`, `last_name`, `m_last_name`, `social_reason`, `birthday`, `phone`, `email`, `street`, `exterior_num`, `interior_num`, `postal_code`,
+`colony`, `town`, `locality`, `state`, `country`, `comments`) VALUES (NULL, '".$array['user_id']."', '1', '".$array['subject']."', '".$array['solicitor_name']."', '".$array['last_name']."', '".$array['m_last_name']."', '".$array['social']."', '".$date.
+"', '".$array['phone']."', '".$array['email']."', '".$array['street']."', '".$array['exterior']."', '".$array['interior']."', '".$array['postal']."', '".$array['colony']."', '".$array['town']."', '".$array['locality'].
+"', '".$array['state']."', '".$array['country']."', '".$array['text']."');";
 
-print_r($array);
-
-return true;
+$wpdb->query( $query );
 
 if( isset($_POST['submit_cambiar']) ) {
     $target_dir = dirname(__FILE__).'/uploads/';

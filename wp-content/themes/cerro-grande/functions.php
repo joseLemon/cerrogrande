@@ -7,4 +7,12 @@ function login_redirect( $redirect_to, $request, $user  ) {
 }
 add_filter( 'login_redirect', 'login_redirect', 10, 3 );
 
+function redirect_to_page() {
+    if ( is_page('mi-cuenta') && ! is_user_logged_in() ) {
+        wp_redirect( home_url().'/inicio#login', 301 );
+        exit;
+    }
+}
+add_action( 'template_redirect', 'redirect_to_page' );
+
 ?>

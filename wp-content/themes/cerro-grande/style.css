@@ -24,13 +24,22 @@ Text Domain: Lemon Three
 }
 
 /* GENERAL STYLES */
+html {
+    margin-top: 0!important;
+}
+
+
 body {
     font-family: 'Champagne&Limousines', sans-serif;
 }
 
+#wpadminbar {
+    display: none;
+}
+
 .wrapper {
     overflow: hidden;
-    min-height: 100vh;
+    min-height: calc(100vh - 267px);
 }
 
 section {
@@ -722,7 +731,6 @@ height: auto;
     height: 35vh;
     background: url(img/background/parallax1.jpg) no-repeat center center;
     background-size: cover;
-    background-attachment: fixed;
 }
 
 #section4 .parallax h1 {
@@ -1028,7 +1036,6 @@ height: auto;
     height: 250px;
     background: url(img/background/parallax2.jpg) no-repeat center center;
     background-size: cover;
-    background-attachment: fixed;
 }
 
 /* BLOG */
@@ -1205,7 +1212,7 @@ footer {
 
 .form-container .info a {
     float: right;
-    margin: -76px 10px; 0 0;
+    margin: -76px 10px;
 }
 
 .form-container ul {
@@ -1469,6 +1476,9 @@ footer {
     }
     #section3 .col-sm-7 img {
         max-width: 360px;
+    }
+    #section3 ul>li.red-decoration::after {
+        bottom: 5px;
     }
     #section4 .parallax h1 {
         font-size: 55px;
@@ -1878,7 +1888,6 @@ font-size: 18px;
     }
     #section3 ul>li {
         font-size: 24px;
-        text-align: 
     }
     #section3 ul>li.red-decoration::after {
         bottom: 7px;
