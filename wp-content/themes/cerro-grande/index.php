@@ -463,7 +463,7 @@
                 <div class="parallax text-center">
                     <div class="vertical-align">
                         <div class="container">
-                            <h1 class="white">¿Y TÚ    ® ?</h1>
+                            <h1 class="white">¿Y TÚ     ?</h1>
                             <h4 class="white">
                                 Ofrecemos soluciones personalizadas para la protección legal de su portafolio de ideas.
                                 Estrategias que permiten detonar y potenciar su crecimiento nacional e internacional.

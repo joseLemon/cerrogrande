@@ -1692,7 +1692,7 @@ font-size: 18px;
         left: 0%;
     }
     .fp-controlArrow {
-        top: 55px;
+        display: none;
     }
     section {
         height: auto!important;
@@ -1805,9 +1805,9 @@ font-size: 18px;
         float: none!important;
         width: 100%;
         text-align: left!important;
+        /*display: block!important;*/
         max-width: 300px;
         margin: 0 auto;
-        min-width: 0;
     }
     #section1 #slide4 .img-container {
         width: 100%!important;
@@ -1991,9 +1991,6 @@ font-size: 18px;
     .main-nav {
         padding-top: 26px;
     }
-    #section3 .col-sm-7 img {
-        max-width: 100%;
-    }
     #section4 .parallax h1 {
         font-size: 20px;
         margin-bottom: 0;
@@ -2001,8 +1998,5 @@ font-size: 18px;
     #section4 .parallax h4 {
         font-size: 12px;
         margin: 0;
-    }
-    #section4 .fp-controlArrow {
-        top: 21%;
     }
 }
