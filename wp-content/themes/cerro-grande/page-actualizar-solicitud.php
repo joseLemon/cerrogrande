@@ -71,6 +71,20 @@ if( isset($_POST['status']) ) {
     $follow_up = $wpdb->get_results("SELECT * FROM follow_ups WHERE follow_up_id =".$ID." LIMIT 1");
     $follow_up = $follow_up[0];
 
+    $target_dir = dirname(__FILE__).'/file_uploads/';
+    $target_file = $target_dir . basename($_FILES["design"]["name"]);
+    $uploadOk = 1;
+    if (move_uploaded_file($_FILES["pdf_file"]["tmp_name"], $target_dir .$ID.'.pdf')) {
+        //echo "The file ". basename( $_FILES["design"]["name"]). " has been uploaded.";
+    } else {
+        //echo "Sorry, there was an error uploading your file Design.";
+    }
+
+    if ($_FILES["upload-file"]["size"] > 25000000) {
+        $uploadOk = 0;
+        echo "Lo sentimos, esa imagen tiene un peso mayor a 25Mb.";
+    }
+
     // multiple recipients
     $to  = $follow_up->email;
 
@@ -189,123 +203,123 @@ switch( $follow_ups->status_id ) {
         <input type="hidden" value="<?php echo($ID)?>" name="follow_up_id" id="follow_up_id">
         <div class="wrapper registro seguimiento">
             <div class="container">
-                <div class="form-container active spacing">
-                    <!--
-                   <div class="info">
-                    <a href=""><img src="<?php bloginfo('template_directory'); ?>/img/icons/info.png" alt=""></a>
-                </div>
-                -->
-                    <h1 class="header blue text-center">Seguimiento</h1>
-                    <div class="row light-spacing">
-                        <h3 class="blue text-center">Información del Solicitante</h3>
-                        <table>
-                            <thead class="white">
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Razón Social</th>
-                                <th>Fecha de Nacimiento</th>
-                                <th>Teléfono</th>
-                                <th>Correo Electrónico</th>
-                            </tr>
-                            </thead>
-                            <tbody class="text">
-                            <tr>
-                                <td><?php echo $follow_up->name." ".$follow_up->last_name." ".$follow_up->m_last_name; ?></td>
-                                <td><?php echo $follow_up->social_reason; ?></td>
-                                <td><?php echo $follow_up->birthday; ?></td>
-                                <td><?php echo $follow_up->phone; ?></td>
-                                <td><?php echo $follow_up->email; ?></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div style="margin: 10px 0;" class="center-block"></div>
-                        <h3 class="blue text-center">Domicilio del Solicitante</h3>
-                        <table>
-                            <thead class="white">
-                            <tr>
-                                <th>Calle</th>
-                                <th>Número Exterior</th>
-                                <th>Número Interior</th>
-                                <th>Código Postal</th>
-                            </tr>
-                            </thead>
-                            <tbody class="text">
-                            <tr>
-                                <td><?php echo $follow_up->street; ?></td>
-                                <td><?php echo $follow_up->ext_num; ?></td>
-                                <td><?php echo $follow_up->int_num; ?></td>
-                                <td><?php echo $follow_up->postal_code; ?></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <table>
-                            <thead class="white">
-                            <tr>
-                                <th>Colonia</th>
-                                <th>Municipio</th>
-                                <th>Localidad</th>
-                                <th>Estado</th>
-                                <th>País</th>
-                            </tr>
-                            </thead>
-                            <tbody class="text">
-                            <tr>
-                                <td><?php echo $follow_up->colony; ?></td>
-                                <td><?php echo $follow_up->town; ?></td>
-                                <td><?php echo $follow_up->locality; ?></td>
-                                <td><?php echo $follow_up->state; ?></td>
-                                <td><?php echo $follow_up->country; ?></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <h3 class="blue text-center">Comentarios</h3>
-                        <textarea name="comments" id="comments" cols="30" rows="10" placeholder="Comentarios" maxlength="254"><?php echo $follow_up->comments; ?></textarea>
-                    </div>
-                    <div class="row text-center margin-bottom">
-                        <div class="col-sm-4 margin-top">
-                            <p class="gray text-center">Solicitud</p>
-                            <input type="text" class="hidden" value="">
+                <div class="form-container active">
+                    <div class="light-spacing">
+                        <h1 class="header blue text-center">Seguimiento</h1>
+                        <div class="row no-margin">
+                            <h3 class="blue text-center">Información del Solicitante</h3>
+                            <table style="width: 100%;">
+                                <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Razón Social</th>
+                                    <th>Fecha de Nacimiento</th>
+                                    <th>Teléfono</th>
+                                    <th>Correo Electrónico</th>
+                                </tr>
+                                </thead>
+                                <tbody class="text">
+                                <tr>
+                                    <td><?php echo $follow_up->name." ".$follow_up->last_name." ".$follow_up->m_last_name; ?></td>
+                                    <td><?php echo $follow_up->social_reason; ?></td>
+                                    <td><?php echo $follow_up->birthday; ?></td>
+                                    <td><?php echo $follow_up->phone; ?></td>
+                                    <td><?php echo $follow_up->email; ?></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div style="margin: 10px 0;" class="center-block"></div>
+                            <h3 class="blue text-center">Domicilio del Solicitante</h3>
+                            <table style="width: 100%;">
+                                <thead>
+                                <tr>
+                                    <th>Calle</th>
+                                    <th>Número Exterior</th>
+                                    <th>Número Interior</th>
+                                    <th>Código Postal</th>
+                                </tr>
+                                </thead>
+                                <tbody class="text">
+                                <tr>
+                                    <td><?php echo $follow_up->street; ?></td>
+                                    <td><?php echo $follow_up->ext_num; ?></td>
+                                    <td><?php echo $follow_up->int_num; ?></td>
+                                    <td><?php echo $follow_up->postal_code; ?></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table style="width: 100%;">
+                                <thead>
+                                <tr>
+                                    <th>Colonia</th>
+                                    <th>Municipio</th>
+                                    <th>Localidad</th>
+                                    <th>Estado</th>
+                                    <th>País</th>
+                                </tr>
+                                </thead>
+                                <tbody class="text">
+                                <tr>
+                                    <td><?php echo $follow_up->colony; ?></td>
+                                    <td><?php echo $follow_up->town; ?></td>
+                                    <td><?php echo $follow_up->locality; ?></td>
+                                    <td><?php echo $follow_up->state; ?></td>
+                                    <td><?php echo $follow_up->country; ?></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="row no-margin">
+                                <div class="col-sm-6" style="padding-left: 0px;">
+                                    <label for="comments">Comentarios</label>
+                                    <textarea name="comments" id="comments" cols="30" rows="5" placeholder="Comentarios" maxlength="254"><?php echo $follow_up->comments; ?></textarea>
+                                </div>
+                                <div class="col-sm-6" style="padding-right: 0px;">
+                                    <label for="pdf">PDF</label>
+                                    <?php
+                                    $pdf_file = get_template_directory_uri().'/file_uploads/'.$ID.'.pdf';
+                                    if(pdf_exists($pdf_file)) {
+                                        echo '<a href="'.$pdf_file.'" class="center-block" target="_blank">Ver PDF</a>';
+                                    }
+                                    ?>
+                                    <label for="pdf_file">Cambiar PDF</label>
+                                    <input type="file" name="pdf_file" id="pdf_file">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row no-margin text-center">
+                            <div class="col-sm-4 margin-top">
+                                <p class="gray text-center">Solicitud</p>
+                                <input type="text" class="hidden" value="">
 
-                            <img src="<?php echo $solicitud; ?>" alt="Solicitud">
-                            <hr class="right">
+                                <img src="<?php echo $solicitud; ?>" alt="Solicitud">
+                                <hr class="right">
+                            </div>
+                            <div class="col-sm-4 margin-top">
+                                <p class="gray text-center">Proceso</p>
+                                <img src="<?php echo $proceso; ?>" alt="Proceso">
+                            </div>
+                            <div class="col-sm-4 margin-top">
+                                <p class="gray text-center">Registro</p>
+                                <img src="<?php echo $registro; ?>"  alt="Registro">
+                                <hr class="left">
+                            </div>
                         </div>
-                        <div class="col-sm-4 margin-top">
-                            <p class="gray text-center">Proceso</p>
-                            <img src="<?php echo $proceso; ?>" alt="Proceso">
-                        </div>
-                        <div class="col-sm-4 margin-top">
-                            <p class="gray text-center">Registro</p>
-                            <img src="<?php echo $registro; ?>"  alt="Registro">
-                            <hr class="left">
-                        </div>
-                    </div>
-                    <div class="text-center actualizar-solicitud">
-                        <select name="status" id="status">
-                            <?php
-                            $statuses = $wpdb->get_results("SELECT status_id, name FROM statuses");
-                            foreach( $statuses as $status ) {
-                                if( $follow_up->status_id<3 ) {
-                                    if( $status->status_id<3 ) {
-                                        if( $status->status_id==$follow_up->status_id ) {
-                                            ?>
-                                            <option value="<?php echo $status->status_id ?>" selected><?php echo $status->name ?></option>
-                                        <?php   }else{ ?>
-                                            <option value="<?php echo $status->status_id ?>"><?php echo $status->name ?></option>
-                                        <?php   }
-                                    }
-                                }else{
-                                    if($status->status_id>2){
-                                        if($status->status_id==$follow_up->status_id){?>
-                                            <option value="<?php echo $status->status_id ?>" selected><?php echo $status->name ?></option>
-                                        <?php  } else { ?>
-                                            <option value="<?php echo $status->status_id ?>"><?php echo $status->name ?></option>
-                                        <?php
-                                        }
-                                    }
+                        <div class="text-center actualizar-solicitud">
+                            <select name="status" id="status">
+                                <?php
+                                $statuses = $wpdb->get_results("SELECT status_id, name FROM statuses");
+                                foreach( $statuses as $status ) {
+                                    if( $status->status_id==$follow_up->status_id ) {
+                                        ?>
+                                        <option value="<?php echo $status->status_id ?>" selected><?php echo $status->name ?></option>
+                                    <?php   }else{ ?>
+                                        <option value="<?php echo $status->status_id ?>"><?php echo $status->name ?></option>
+                                    <?php   }
                                 }
-                            }?>
-                        </select>
-                        <input class="green-btn white" type="submit" value="Actualizar">
+                                ?>
+                            </select>
+                            <input class="green-btn white" type="submit" value="Actualizar">
+                        </div>
                     </div>
                 </div>
             </div>

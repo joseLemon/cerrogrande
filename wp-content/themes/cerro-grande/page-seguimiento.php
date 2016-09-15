@@ -117,7 +117,19 @@ switch( $follow_ups->status_id ) {
                     </tbody>
                 </table>
                 <h3>Información Adicional</h3>
-                <p><?php echo $follow_ups->comments; ?></p>
+                <div class="row no-margin">
+                    <div class="col-sm-6">
+                        <p><?php echo $follow_ups->comments; ?></p>
+                    </div>
+                    <div class="col-sm-6">
+                        <?php
+                        $pdf_file = get_template_directory_uri().'/file_uploads/'.$follow_up_id.'.pdf';
+                        if(pdf_exists($pdf_file)) {
+                            echo '<a href="'.$pdf_file.'" target="_blank">Ver PDF</a>';
+                        }
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

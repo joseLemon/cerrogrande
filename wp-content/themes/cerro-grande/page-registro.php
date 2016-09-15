@@ -129,9 +129,13 @@ foreach($statuses as $status){ ?>
 </select>
 </div>
 -->
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <label for="text">Comentarios</label>
-                        <textarea name="text" id="text" cols="30" rows="10"></textarea>
+                        <textarea name="text" id="text" cols="30" rows="5"></textarea>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="pdf_file">PDF</label>
+                        <input type="file" name="pdf_file" id="pdf_file">
                     </div>
                 </div>
                 <div class="nav" role="tablist">
