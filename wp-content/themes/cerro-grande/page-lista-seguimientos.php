@@ -35,7 +35,7 @@ switch($tab){
 ?>
     <div class="wrapper">
         <div class="container request-list spacing">
-            <form action="<?php echo home_url()?>/lista-seguimientos" method="POST" class="pull-right">
+            <form action="<?php echo home_url()?>/lista-seguimientos" method="POST" class="pull-right search-form">
                 <div class="input-group">
                     <input class="form-control" type="text" onchange="fillTables" name="search" id="search">
                     <span class="input-group-btn">
@@ -51,14 +51,14 @@ switch($tab){
             </ul>
             <?php
             if ( $flag ) {
-                $byAll = $wpdb->get_results("SELECT follow_up_id, user_id, subject, solicitor_name, last_name, m_last_name, social_reason, statuses.name as status_name FROM follow_ups INNER JOIN statuses on follow_ups.status_id = statuses.status_id WHERE (last_name LIKE '%".$term."%' OR m_last_name LIKE '%".$term."%' OR social_reason LIKE '%".$term."%' OR statuses.name LIKE '%".$term."%' OR solicitor_name LIKE '%".$term."%') LIMIT ".$pageAll.", 15");
-                $byAllCount = $wpdb->get_results("SELECT COUNT(follow_up_id) as cont FROM follow_ups INNER JOIN statuses on follow_ups.status_id = statuses.status_id WHERE (last_name LIKE '%".$term."%' OR m_last_name LIKE '%".$term."%' OR social_reason LIKE '%".$term."%' OR statuses.name LIKE '%".$term."%' solicitor_name LIKE '%".$term."%')");
-                $inProcess = $wpdb->get_results("SELECT follow_up_id, user_id, subject, solicitor_name, last_name, m_last_name, social_reason, statuses.name as status_name FROM follow_ups INNER JOIN statuses on follow_ups.status_id = statuses.status_id WHERE follow_ups.status_id = 1 AND (last_name LIKE '%".$term."%' OR m_last_name LIKE '%".$term."%' OR social_reason LIKE '%".$term."%' OR statuses.name LIKE '%".$term."%' OR solicitor_name LIKE '%".$term."%') LIMIT ".$pageR.", 15");
-                $inProcessCount = $wpdb->get_results("SELECT COUNT(follow_up_id)as cont FROM follow_ups WHERE follow_ups.status_id = 1 INNER JOIN statuses on follow_ups.status_id = statuses.status_id WHERE (last_name LIKE '%".$term."%' OR m_last_name LIKE '%".$term."%' OR social_reason LIKE '%".$term."%' OR statuses.name LIKE '%".$term."%' solicitor_name LIKE '%".$term."%')");
-                $paused = $wpdb->get_results("SELECT follow_up_id, user_id, subject, solicitor_name, last_name, m_last_name, social_reason, statuses.name as status_name FROM follow_ups INNER JOIN statuses on follow_ups.status_id = statuses.status_id WHERE follow_ups.status_id = 2 AND (last_name LIKE '%".$term."%' OR m_last_name LIKE '%".$term."%' OR social_reason LIKE '%".$term."%' OR statuses.name LIKE '%".$term."%' OR solicitor_name LIKE '%".$term."%') LIMIT ".$pagePa.", 15");
-                $pausedCount = $wpdb->get_results("SELECT COUNT(follow_up_id)as cont FROM follow_ups WHERE follow_ups.status_id = 2 INNER JOIN statuses on follow_ups.status_id = statuses.status_id WHERE (last_name LIKE '%".$term."%' OR m_last_name LIKE '%".$term."%' OR social_reason LIKE '%".$term."%' OR statuses.name LIKE '%".$term."%' solicitor_name LIKE '%".$term."%')");
-                $concluded = $wpdb->get_results("SELECT follow_up_id, user_id, subject, solicitor_name, last_name, m_last_name, social_reason, statuses.name as status_name FROM follow_ups INNER JOIN statuses on follow_ups.status_id = statuses.status_id WHERE follow_ups.status_id = 3 AND (last_name LIKE '%".$term."%' OR m_last_name LIKE '%".$term."%' OR social_reason LIKE '%".$term."%' OR statuses.name LIKE '%".$term."%' OR solicitor_name LIKE '%".$term."%') LIMIT ".$pageC.", 15");
-                $concludedCount = $wpdb->get_results("SELECT COUNT(follow_up_id)as cont FROM follow_ups WHERE follow_ups.status_id = 3 INNER JOIN statuses on follow_ups.status_id = statuses.status_id WHERE (last_name LIKE '%".$term."%' OR m_last_name LIKE '%".$term."%' OR social_reason LIKE '%".$term."%' OR statuses.name LIKE '%".$term."%' solicitor_name LIKE '%".$term."%')");
+                $byAll = $wpdb->get_results("SELECT follow_up_id, user_id, subject, solicitor_name, last_name, m_last_name, social_reason, statuses.name as status_name FROM follow_ups INNER JOIN statuses on follow_ups.status_id = statuses.status_id WHERE (last_name LIKE '%".$term."%' OR m_last_name LIKE '%".$term."%' OR social_reason LIKE '%".$term."%' OR statuses.name LIKE '%".$term."%' OR solicitor_name LIKE '%".$term."%' OR subject LIKE '%".$term."%') LIMIT ".$pageAll.", 15");
+                $byAllCount = $wpdb->get_results("SELECT COUNT(follow_up_id) as cont FROM follow_ups INNER JOIN statuses on follow_ups.status_id = statuses.status_id WHERE (last_name LIKE '%".$term."%' OR m_last_name LIKE '%".$term."%' OR social_reason LIKE '%".$term."%' OR statuses.name LIKE '%".$term."%' solicitor_name LIKE '%".$term."%' OR subject LIKE '%".$term."%')");
+                $inProcess = $wpdb->get_results("SELECT follow_up_id, user_id, subject, solicitor_name, last_name, m_last_name, social_reason, statuses.name as status_name FROM follow_ups INNER JOIN statuses on follow_ups.status_id = statuses.status_id WHERE follow_ups.status_id = 1 AND (last_name LIKE '%".$term."%' OR m_last_name LIKE '%".$term."%' OR social_reason LIKE '%".$term."%' OR statuses.name LIKE '%".$term."%' OR solicitor_name LIKE '%".$term."%' OR subject LIKE '%".$term."%') LIMIT ".$pageR.", 15");
+                $inProcessCount = $wpdb->get_results("SELECT COUNT(follow_up_id)as cont FROM follow_ups WHERE follow_ups.status_id = 1 INNER JOIN statuses on follow_ups.status_id = statuses.status_id WHERE (last_name LIKE '%".$term."%' OR m_last_name LIKE '%".$term."%' OR social_reason LIKE '%".$term."%' OR statuses.name LIKE '%".$term."%' solicitor_name LIKE '%".$term."%' OR subject LIKE '%".$term."%')");
+                $paused = $wpdb->get_results("SELECT follow_up_id, user_id, subject, solicitor_name, last_name, m_last_name, social_reason, statuses.name as status_name FROM follow_ups INNER JOIN statuses on follow_ups.status_id = statuses.status_id WHERE follow_ups.status_id = 2 AND (last_name LIKE '%".$term."%' OR m_last_name LIKE '%".$term."%' OR social_reason LIKE '%".$term."%' OR statuses.name LIKE '%".$term."%' OR solicitor_name LIKE '%".$term."%' OR subject LIKE '%".$term."%') LIMIT ".$pagePa.", 15");
+                $pausedCount = $wpdb->get_results("SELECT COUNT(follow_up_id)as cont FROM follow_ups WHERE follow_ups.status_id = 2 INNER JOIN statuses on follow_ups.status_id = statuses.status_id WHERE (last_name LIKE '%".$term."%' OR m_last_name LIKE '%".$term."%' OR social_reason LIKE '%".$term."%' OR statuses.name LIKE '%".$term."%' solicitor_name LIKE '%".$term."%' OR subject LIKE '%".$term."%')");
+                $concluded = $wpdb->get_results("SELECT follow_up_id, user_id, subject, solicitor_name, last_name, m_last_name, social_reason, statuses.name as status_name FROM follow_ups INNER JOIN statuses on follow_ups.status_id = statuses.status_id WHERE follow_ups.status_id = 3 AND (last_name LIKE '%".$term."%' OR m_last_name LIKE '%".$term."%' OR social_reason LIKE '%".$term."%' OR statuses.name LIKE '%".$term."%' OR solicitor_name LIKE '%".$term."%' OR subject LIKE '%".$term."%') LIMIT ".$pageC.", 15");
+                $concludedCount = $wpdb->get_results("SELECT COUNT(follow_up_id)as cont FROM follow_ups WHERE follow_ups.status_id = 3 INNER JOIN statuses on follow_ups.status_id = statuses.status_id WHERE (last_name LIKE '%".$term."%' OR m_last_name LIKE '%".$term."%' OR social_reason LIKE '%".$term."%' OR statuses.name LIKE '%".$term."%' solicitor_name LIKE '%".$term."%' OR subject LIKE '%".$term."%')");
             } else {
                 $byAll = $wpdb->get_results("SELECT follow_up_id, user_id, subject, solicitor_name, last_name, m_last_name, social_reason, statuses.name as status_name FROM follow_ups INNER JOIN statuses on follow_ups.status_id = statuses.status_id LIMIT ".$pageAll.", 15");
                 $byAllCount = $wpdb->get_results("SELECT COUNT(follow_up_id) as cont FROM follow_ups");
@@ -72,7 +72,7 @@ switch($tab){
             ?>
             <div class="tab-content">
                 <div role="tabpanel" id="all" class="tab-pane fade <?php if($tab=='all'){echo ("in active");} ?>">
-                    <table class="admin-table" style="width: 100%;">
+                    <table class="followUp-table" style="width: 100%;">
                         <colgroup>
                             <col style="width: 25%;">
                             <col style="width: 25%;">
@@ -120,7 +120,7 @@ switch($tab){
                     <?php } ?>
                 </div>
                 <div role="tabpanel" id="process" class="tab-pane fade <?php if($tab=='process'){echo ("in active");} ?>">
-                    <table class="admin-table" style="width: 100%;">
+                    <table class="followUp-table" style="width: 100%;">
                         <colgroup>
                             <col style="width: 25%;">
                             <col style="width: 25%;">
@@ -168,7 +168,7 @@ switch($tab){
                     <?php } ?>
                 </div>
                 <div role="tabpanel" id="paused" class="tab-pane fade <?php if($tab=='paused'){echo ("in active");} ?>">
-                    <table class="admin-table" style="width: 100%;">
+                    <table class="followUp-table" style="width: 100%;">
                         <colgroup>
                             <col style="width: 25%;">
                             <col style="width: 25%;">
@@ -216,7 +216,7 @@ switch($tab){
                     <?php } ?>
                 </div>
                 <div role="tabpanel" id="concluded" class="tab-pane fade <?php if($tab=='concluded'){echo ("in active");} ?>">
-                    <table class="admin-table" style="width: 100%;">
+                    <table class="followUp-table" style="width: 100%;">
                         <colgroup>
                             <col style="width: 25%;">
                             <col style="width: 25%;">

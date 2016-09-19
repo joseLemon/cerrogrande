@@ -705,30 +705,31 @@
             <div class="parallax text-center">
                 <a href="#login-modal" data-toggle="modal" data-target="#login-modal" class="btn-red vertical-align center-block">LOGIN</a>
             </div>
-            <div id="login-modal" class="modal fade" role="dialog" tabindex="-1">
+            <div id="login-modal" class="modal fade login-modal" role="dialog" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h1 class="heading text-center">LOGIN</h1>
                         </div>
                         <div class="modal-body">
                             <?php
-                            $args = array(
-                                'echo'           => true,
-                                'remember'       => true,
-                                'form_id'        => 'loginform',
-                                'id_username'    => 'user_login',
-                                'id_password'    => 'user_pass',
-                                'id_remember'    => 'rememberme',
-                                'id_submit'      => 'wp-submit',
-                                'label_username' => __( 'Usuario' ),
-                                'label_password' => __( 'Contraseña' ),
-                                'label_remember' => __( 'Recuerdame' ),
-                                'label_log_in'   => __( 'Acceder' ),
-                                'value_username' => '',
-                                'value_remember' => false
-                            );
-                            wp_login_form( $args ); 
+                                $args = array(
+                                    'echo'           => true,
+                                    'remember'       => true,
+                                    'form_id'        => 'loginform',
+                                    'id_username'    => 'user_login',
+                                    'id_password'    => 'user_pass',
+                                    'id_remember'    => 'rememberme',
+                                    'id_submit'      => 'wp-submit',
+                                    'label_username' => __( 'Usuario' ),
+                                    'label_password' => __( 'Contraseña' ),
+                                    'label_remember' => __( 'Recuerdame' ),
+                                    'label_log_in'   => __( 'Acceder' ),
+                                    'value_username' => '',
+                                    'value_remember' => false
+                                );
+                                wp_login_form( $args ); 
                             ?>
                         </div>
                     </div>

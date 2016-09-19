@@ -21,7 +21,7 @@ $statuses = $wpdb->get_results("SELECT * FROM statuses");
                         <div class="col-sm-4"></div>
                     </div>
                     <div class="col-sm-12">
-                        <table style="width: 100%;">
+                        <table class="followUp-table" style="width: 100%;">
                             <colgroup>
                                 <col style="width: 10%;">
                                 <col style="width: 20%;">
@@ -33,18 +33,10 @@ $statuses = $wpdb->get_results("SELECT * FROM statuses");
                             <thead>
                             <tr>
                                 <th></th>
-                                <th>
-                                    <h2>Asunto</h2>
-                                </th>
-                                <th>
-                                    <h2>Razón Social</h2>
-                                </th>
-                                <th>
-                                    <h2>Nombre</h2>
-                                </th>
-                                <th>
-                                    <h2>Estatus</h2>
-                                </th>
+                                <th>Asunto</th>
+                                <th>Razón Social</th>
+                                <th>Nombre</th>
+                                <th>Estatus</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -55,21 +47,11 @@ $statuses = $wpdb->get_results("SELECT * FROM statuses");
                                 $counter++;
                                 ?>
                                 <tr>
-                                    <td><?php echo $counter; ?></td>
-                                    <td>
-                                        <p class="text no-margin"><?php echo $follow_up->subject ?></p>
-                                    </td>
-                                    <td>
-                                        <p class="text no-margin"><?php echo $follow_up->social_reason ?></p>
-                                    </td>
-                                    <td>
-                                        <p class="text no-margin"><?php echo $follow_up->solicitor_name.' '.$follow_up->last_name ?></p>
-                                    </td>
-                                    <td>
-                                        <p class="text no-margin">
-                                            <?php echo $follow_up->status_name ?>
-                                        </p>
-                                    </td>
+                                    <td class="text-center" style="padding-left: 5px;"><?php echo $counter; ?></td>
+                                    <td><?php echo $follow_up->subject ?></td>
+                                    <td><?php echo $follow_up->social_reason ?></td>
+                                    <td><?php echo $follow_up->solicitor_name.' '.$follow_up->last_name ?></td>
+                                    <td><?php echo $follow_up->status_name ?></td>
                                     <td>
                                         <a class="center-block" href="<?php echo home_url() . '/seguimiento/?id=' . $follow_up->follow_up_id; ?>">Ver Seguimiento</a>
                                     </td>

@@ -181,6 +181,128 @@ h3.heading {
     animation: arrowMoveLeft 2s infinite;
 }
 
+.followUp-table th, .table-header,
+.followUp-table td,
+.followUp-table-view th,
+.followUp-table-view td {
+    padding: 5px;
+}
+
+.followUp-table .email,
+.followUp-table-view .email {
+    word-break: break-all;
+}
+
+.followUp-table th, .table-header {
+    background-color: #9c1006;
+    text-align: center;
+    color: #fff;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+    font-size: 20px;
+}
+
+.followUp-status p {
+    position: relative;
+    width: 120px;
+    margin: 0 auto;
+    background: #fff;
+    z-index: 10;
+    padding: 5px;
+}
+
+.followUp-status p.active {
+    background-color: #9c1006;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.followUp-status hr {
+    top: 50%;
+}
+
+.table-header {
+    text-align: left;
+    margin: 0;
+    border-right: 1px solid #9c1006;
+    border-left: 1px solid #9c1006;
+}
+
+.table-cell {
+    border: 1px solid #626262;
+    border-top: 0;
+    height: 120px;
+}
+
+.table-textarea {
+    border-radius: 0;
+    border: 1px solid #626262;
+    border-top: 0;
+    resize: none;
+    height: 120px;
+    width: 100%;
+    border-right: 0;
+}
+
+.followUp-table th:first-child {
+    border-left: 1px solid #9c1006;
+}
+
+.followUp-table th:last-child {
+    border-right: 1px solid #9c1006;
+}
+
+.followUp-table-view th,
+.followUp-table td, .followUp-table-view td {
+    color: #181818;
+    font-weight: 600;
+    padding-left: 15px;
+    border: 1px solid #626262;
+    border-top: 0;
+}
+
+.followUp-table a {
+    color: #a32017;
+}
+
+.followUp-table-view th,
+.followUp-table-view td  {
+    border-left: 1px solid #626262;
+    border-right: 1px solid #626262;
+}
+
+.followUp-table-view th {
+    border-bottom: 0;
+    color: #8d8b8b;
+    padding-bottom: 2px;
+}
+
+.followUp-table-view td {
+    padding-top: 2px;
+}
+
+.seguimiento input[type=submit],
+.login-modal input[type=submit] {
+    margin: 0;
+    background-color: #3aaa35;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 0;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.seguimiento input[type=submit]:hover,
+.login-modal input[type=submit]:hover {
+    background-color: #34952f;
+}
+
+.login-modal .login-remember,
+.login-modal .login-submit {
+    text-align: right;
+}
+
 /* PRE-LOADER */
 .ip-header {
     background-color: #000;
@@ -1170,6 +1292,73 @@ footer {
     padding: 10px 0;
 }
 
+/* LISTA DE SEGUIMIENTOS */
+.request-list .search-form {
+    margin-bottom: 20px;
+}
+
+.request-list .search-form span:after {
+    content: '';
+    background: url(http://www.registralow.com/site/wp-content/themes/mystile/img/icons/search.png)no-repeat center center;
+    background-size: contain;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    display: block;
+    z-index: 2;
+    pointer-events: none;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.request-list .nav-tabs li a {
+    padding: 5px 15px;
+    font-weight: 600;
+    color: #9c1006;
+    border: 1px solid #9c1006;
+    border-left: 0;
+    border-bottom: 0;
+    border-radius: 0;
+    margin: 0;
+}
+.request-list .nav-tabs li:first-child a {
+    border-left: 1px solid #9c1006;
+}
+
+.request-list .nav-tabs li.active a {
+    background-color: #9c1006;
+    border: 1px solid #9c1006;
+    border-bottom: 0;
+    color: #fff;
+}
+
+/* LOGIN MODAL */
+.login-modal {
+    font-family: 'AllerLight', sans-serif;
+}
+
+.login-modal .heading,
+.login-modal input {
+    margin: 0!important;
+}
+
+.login-modal input[type=text],
+.login-modal input[type=password] {
+    border: 1px solid #9c1006;
+    border-radius: 0;
+}
+
+.login-modal input[type=submit] {
+    height: auto!important;
+    border-radius: 0!important;
+    line-height: normal!important;
+    border: 0;
+}
+
 /* BEGIN REGISTRO */
 .registro {
     background-color: #494748;
@@ -1250,7 +1439,7 @@ footer {
     margin: 0;
 }
 
-.form-container input[type="text"], .form-container select, .select2, .form-container textarea, .blue-input, #respond textarea, .woocommerce-billing-fields input[type=text], .woocommerce-billing-fields input[type=email], .woocommerce-billing-fields select, .woocommerce-billing-fields input[type=tel],
+.form-container input[type="text"], .form-container select, .select2, .blue-input, #respond textarea, .woocommerce-billing-fields input[type=text], .woocommerce-billing-fields input[type=email], .woocommerce-billing-fields select, .woocommerce-billing-fields input[type=tel],
 .login-username input, .login-password input, .input-blue {
     font-size: 14px;
     color: #979797;
@@ -1369,16 +1558,11 @@ footer {
     margin-top: 30px;
 }
 
-.seguimiento img {
-    position: relative;
-    z-index: 2;
-}
-
 .seguimiento hr {
     position: absolute;
     z-index: 1;
     width: 300px;
-    top: 60%;
+    top: calc(50% - 2px);
     border-bottom: 2px solid #979797;
 }
 
@@ -1388,6 +1572,19 @@ footer {
 
 .seguimiento hr.left {
     right: 50%;
+}
+
+.seguimiento select {
+    min-height: auto;
+    padding: 12px 15px;
+    max-width: 250px;
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: #fff;
+    border: 1px solid #9c1006;
+    color: #181818;
+    font-weight: 600;
+    text-align: center;
 }
 
 #productSelect {

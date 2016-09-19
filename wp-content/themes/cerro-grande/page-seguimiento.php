@@ -12,19 +12,19 @@ $folder = get_bloginfo('template_url').'/img/seguimiento/';
 
 switch( $follow_ups->status_id ) {
     case 1:
-        $solicitud = $folder.'proceso-active.png';
-        $proceso = $folder.'pausa.png';
-        $registro = $folder.'concluido.png';
+        $proceso = 'active';
+        $pausa = '';
+        $concluido = '';
         break;
     case 2:
-        $solicitud = $folder.'proceso.png';
-        $proceso = $folder.'pausa-active.png';
-        $registro = $folder.'concluido.png';
+        $proceso = '';
+        $pausa = 'active';
+        $concluido = '';
         break;
     case 3:
-        $solicitud = $folder.'proceso.png';
-        $proceso = $folder.'pausa.png';
-        $registro = $folder.'concluido-active.png';
+        $proceso = '';
+        $pausa = '';
+        $concluido = 'active';
         break;
 }
 ?>
@@ -32,31 +32,31 @@ switch( $follow_ups->status_id ) {
     <div class="container">
         <div class="form-container active light-spacing">
             <h1 class="header blue text-center">Seguimiento</h1>
-            <div class="row text-center margin-bottom">
+            <div class="row text-center margin-bottom followUp-status">
                 <div class="col-sm-4 margin-top">
-                    <p class="gray text-center">Solicitud</p>
+                    <p class="gray text-center <?php echo $proceso; ?>">En Proceso</p>
                     <input type="text" class="hidden" value="">
-
-                    <img src="<?php echo $solicitud; ?>" alt="Solicitud">
                     <hr class="right">
                 </div>
                 <div class="col-sm-4 margin-top">
-                    <p class="gray text-center">Proceso</p>
-                    <img src="<?php echo $proceso; ?>" alt="Proceso">
+                    <p class="gray text-center <?php echo $pausa; ?>">En Pausa</p>
                 </div>
                 <div class="col-sm-4 margin-top">
-                    <p class="gray text-center">Registro</p>
-                    <img src="<?php echo $registro; ?>"  alt="Registro">
+                    <p class="gray text-center <?php echo $concluido; ?>">Concluido</p>
                     <hr class="left">
                 </div>
             </div>
             <div class="row light-spacing">
-                <h3>Asunto</h3>
-                <p>
-                    <?php echo $follow_ups->subject; ?>
-                </p>
-                <h3>Información del Solicitante</h3>
-                <table style="width: 100%">
+                <h3 class="table-header">Asunto</h3>
+                <table class="followUp-table-view" style="width: 100%;">
+                    <tbody>
+                        <tr>
+                            <td><?php echo $follow_ups->subject; ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3 class="table-header">Información del Solicitante</h3>
+                <table class="followUp-table-view" style="width: 100%">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -72,13 +72,12 @@ switch( $follow_ups->status_id ) {
                             <td><?php echo $follow_ups->social_reason; ?></td>
                             <td><?php echo $follow_ups->birthday; ?></td>
                             <td><?php echo $follow_ups->phone; ?></td>
-                            <td><?php echo $follow_ups->email; ?></td>
+                            <td class="email"><?php echo $follow_ups->email; ?></td>
                         </tr>
                     </tbody>
                 </table>
-                <div style="margin: 10px 0;" class="center-block"></div>
-                <h3>Domicilio del Solicitante</h3>
-                <table style="width: 100%">
+                <h3 class="table-header">Domicilio del Solicitante</h3>
+                <table class="followUp-table-view" style="width: 100%">
                     <thead>
                         <tr>
                             <th>Calle</th>
@@ -96,7 +95,7 @@ switch( $follow_ups->status_id ) {
                         </tr>
                     </tbody>
                 </table>
-                <table style="width: 100%">
+                <table class="followUp-table-view" style="width: 100%">
                     <thead>
                         <tr>
                             <th>Colonia</th>
@@ -116,20 +115,26 @@ switch( $follow_ups->status_id ) {
                         </tr>
                     </tbody>
                 </table>
-                <h3>Información Adicional</h3>
-                <div class="row no-margin">
-                    <div class="col-sm-6">
-                        <p><?php echo $follow_ups->comments; ?></p>
-                    </div>
-                    <div class="col-sm-6">
-                        <?php
-                        $pdf_file = get_template_directory_uri().'/file_uploads/'.$follow_up_id.'.pdf';
-                        if(pdf_exists($pdf_file)) {
-                            echo '<a href="'.$pdf_file.'" target="_blank">Ver PDF</a>';
-                        }
-                        ?>
-                    </div>
-                </div>
+                <h3 class="table-header">Información Adicional</h3>
+                <table class="followUp-table-view" style="width: 100%;">
+                    <colgroup>
+                        <col style="width: 50%;">
+                        <col style="width: 50%;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td><?php echo $follow_ups->comments; ?></td>
+                            <td>
+                                <?php
+                                $pdf_file = get_template_directory_uri().'/file_uploads/'.$follow_up_id.'.pdf';
+                                if(pdf_exists($pdf_file)) {
+                                    echo '<a href="'.$pdf_file.'" target="_blank">Ver PDF</a>';
+                                }
+                                ?>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
