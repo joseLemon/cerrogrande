@@ -15,4 +15,9 @@ function redirect_to_page() {
 }
 add_action( 'template_redirect', 'redirect_to_page' );
 
+function pdf_exists($url){
+    $headers=get_headers($url);
+    return stripos($headers[0],"200 OK")?true:false;
+}
+
 ?>
