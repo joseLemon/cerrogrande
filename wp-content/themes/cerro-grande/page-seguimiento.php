@@ -3,7 +3,7 @@
 $follow_up_id = $_GET['id'];
 $current_user = wp_get_current_user();
 $ID = $current_user->ID;
-$follow_ups = $wpdb->get_results("SELECT * FROM follow_ups WHERE follow_up_id =".$follow_up_id." LIMIT 1");
+$follow_ups = $wpdb->get_results("SELECT * FROM follow_ups WHERE follow_up_id =".$follow_up_id." AND user_id = ".$ID." LIMIT 1");
 $follow_ups = $follow_ups[0];
 if($follow_ups->user_id != $ID) {
     $follow_ups = [];
