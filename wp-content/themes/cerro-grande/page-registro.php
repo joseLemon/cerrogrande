@@ -4,7 +4,7 @@
         <div name="error" id="error" class="alert alert-danger hidden"></div>
         <form action="<?php echo home_url().'/submitsolicitor';?>" id="solicitorForm" method="post" enctype="multipart/form-data">
             <div role="tabpanel" class="form-container light-spacing tab-pane fade in active" id="registro">
-                <h1 class="header blue text-center">Formato de Solicitud</h1>
+                <h1 class="header text-center">Formato de Solicitud</h1>
                 <div class="row">
                     <div class="col-sm-6">
                         <label for="user_id">Cliente</label>
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <hr>
-                <h2 class="header blue text-center">Domicilio</h2>
+                <h2 class="header text-center">Domicilio</h2>
                 <div class="row">
                     <div class="col-sm-3 ">
                         <label for="street">Calle</label><input type="text" id="street" name="street">
@@ -125,7 +125,8 @@
                     </div>
                     <div class="col-sm-6">
                         <label for="pdf_file">PDF</label>
-                        <input type="file" name="pdf_file" id="pdf_file">
+                        <input type="file" class="inputfile" name="pdf_file" id="pdf_file">
+                        <label for="pdf_file"></label>
                         <input type="hidden" name="MAX_FILE_SIZE" value="25000000"/>
                     </div>
                 </div>

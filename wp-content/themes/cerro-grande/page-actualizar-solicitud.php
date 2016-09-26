@@ -146,7 +146,7 @@ if (!function_exists('http_response_code')) {
     }*/
 
 
-    /*if (wp_mail( $to, $subject, $message, $headers)) {
+/*if (wp_mail( $to, $subject, $message, $headers)) {
         // Set a 200 (okay) response code.
         http_response_code(200);
         //echo "¡Gracias! Su mensaje ha sido envíado.";
@@ -181,7 +181,7 @@ switch( $follow_up->status_id ) {
 ?>
 <form action="<?php echo home_url().'/submitsolicitor/?id='.$ID;?>" method="post" enctype="multipart/form-data">
     <input type="hidden" value="<?php echo($ID)?>" name="follow_up_id" id="follow_up_id">
-    <div class="wrapper registro seguimiento spacing">
+    <div class="wrapper seguimiento spacing">
         <div class="container">
             <div class="form-container active">
                 <div class="light-spacing">
@@ -192,6 +192,7 @@ switch( $follow_up->status_id ) {
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
+                                    <th>Asunto</th>
                                     <th>Razón Social</th>
                                     <th>Fecha de Nacimiento</th>
                                     <th>Teléfono</th>
@@ -200,11 +201,12 @@ switch( $follow_up->status_id ) {
                             </thead>
                             <tbody class="text">
                                 <tr>
-                                    <td><?php echo $follow_up->name." ".$follow_up->last_name." ".$follow_up->m_last_name; ?></td>
-                                    <td><?php echo $follow_up->social_reason; ?></td>
-                                    <td><?php echo $follow_up->birthday; ?></td>
-                                    <td><?php echo $follow_up->phone; ?></td>
-                                    <td><?php echo $follow_up->email; ?></td>
+                                    <td><input type="text" disabled value="<?php echo $follow_up->solicitor_name." ".$follow_up->last_name." ".$follow_up->m_last_name; ?>"></td>
+                                    <td><input type="text" name="subject" value="<?php echo $follow_up->subject; ?>"></td>
+                                    <td><input type="text" name="social" value="<?php echo $follow_up->social_reason; ?>"></td>
+                                    <td><input type="text" name="date" id="date" value="<?php echo date('d/m/Y',strtotime($follow_up->birthday)); ?>"></td>
+                                    <td><input type="text" name="phone" value="<?php echo $follow_up->phone; ?>"></td>
+                                    <td><input type="text" name="email" value="<?php echo $follow_up->email; ?>"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -228,11 +230,11 @@ switch( $follow_up->status_id ) {
                             </thead>
                             <tbody class="text">
                                 <tr>
-                                    <td><?php echo $follow_up->street; ?></td>
-                                    <td><?php echo $follow_up->exterior_num; ?></td>
-                                    <td><?php echo $follow_up->interior_num; ?></td>
-                                    <td><?php echo $follow_up->postal_code; ?></td>
-                                    <td><?php echo $follow_up->colony; ?></td>
+                                    <td><input type="text" name="street" value="<?php echo $follow_up->street; ?>"></td>
+                                    <td><input type="text" name="exterior" value="<?php echo $follow_up->exterior_num; ?>"></td>
+                                    <td><input type="text" name="interior" value="<?php echo $follow_up->interior_num; ?>"></td>
+                                    <td><input type="text" name="postal" value="<?php echo $follow_up->postal_code; ?>"></td>
+                                    <td><input type="text" name="colony" value="<?php echo $follow_up->colony; ?>"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -255,10 +257,10 @@ switch( $follow_up->status_id ) {
                             </thead>
                             <tbody class="text">
                                 <tr>
-                                    <td><?php echo $follow_up->town; ?></td>
-                                    <td><?php echo $follow_up->locality; ?></td>
-                                    <td><?php echo $follow_up->state; ?></td>
-                                    <td><?php echo $follow_up->country; ?></td>
+                                    <td><input type="text" name="town" value="<?php echo $follow_up->town; ?>"></td>
+                                    <td><input type="text" name="locality" value="<?php echo $follow_up->locality; ?>"></td>
+                                    <td><input type="text" name="state" value="<?php echo $follow_up->state; ?>"></td>
+                                    <td><input type="text" name="country" value="<?php echo $follow_up->country; ?>"></td>
                                     <td></td>
                                 </tr>
                             </tbody>
@@ -270,15 +272,16 @@ switch( $follow_up->status_id ) {
                             </div>
                             <div class="col-sm-6" style="padding: 0;">
                                 <h3 class="table-header">PDF</h3>
-                                <?php
-                                $pdf_file = get_template_directory_uri().'/file_uploads/'.$ID.'.pdf';
-                                if(pdf_exists($pdf_file)) {
-                                    echo '<a href="'.$pdf_file.'" class="center-block" target="_blank">Ver PDF</a>';
-                                }
-                                ?>
                                 <div class="table-cell">
+                                    <?php
+                                    $pdf_file = get_template_directory_uri().'/file_uploads/'.$ID.'.pdf';
+                                    if(pdf_exists($pdf_file)) {
+                                        echo '<a href="'.$pdf_file.'" class="center-block" target="_blank">Ver PDF</a>';
+                                    }
+                                    ?>
                                     <label for="pdf_file">Cambiar PDF</label>
-                                    <input type="file" name="pdf_file" id="pdf_file">
+                                    <input type="file" class="inputfile" name="pdf_file" id="pdf_file">
+                                    <label for="pdf_file"></label>
                                     <input type="hidden" name="MAX_FILE_SIZE" value="25000000"/>
                                 </div>
                             </div>
