@@ -64,28 +64,8 @@ if (!function_exists('http_response_code')) {
 
     }
 }
-if( isset($_POST['status']) ) {
-    $wpdb->query("UPDATE follow_ups SET  status_id =  '".$_POST['status']."', comments = '".$_POST['comments']."'  WHERE  follow_ups.follow_up_id =".$_POST['follow_up_id'].";");
-
-    $ID = $_GET['id'];
-    $follow_up = $wpdb->get_results("SELECT * FROM follow_ups WHERE follow_up_id =".$ID." LIMIT 1");
-    $follow_up = $follow_up[0];
-
-    $target_dir = dirname(__FILE__).'/file_uploads/';
-    $target_file = $target_dir . basename($_FILES["design"]["name"]);
-    $uploadOk = 1;
-    if (move_uploaded_file($_FILES["pdf_file"]["tmp_name"], $target_dir .$ID.'.pdf')) {
-        //echo "The file ". basename( $_FILES["design"]["name"]). " has been uploaded.";
-    } else {
-        //echo "Sorry, there was an error uploading your file Design.";
-    }
-
-    if ($_FILES["upload-file"]["size"] > 25000000) {
-        $uploadOk = 0;
-        echo "Lo sentimos, esa imagen tiene un peso mayor a 25Mb.";
-    }
-
-    // multiple recipients
+/*if( isset($_POST['update']) ) {
+    multiple recipients
     $to  = $follow_up->email;
 
     $solicitud = 'http://registralow.com/site/seguimiento/?id='.$ID;
@@ -166,7 +146,7 @@ if( isset($_POST['status']) ) {
     }*/
 
 
-    if (wp_mail( $to, $subject, $message, $headers)) {
+    /*if (wp_mail( $to, $subject, $message, $headers)) {
         // Set a 200 (okay) response code.
         http_response_code(200);
         //echo "¡Gracias! Su mensaje ha sido envíado.";
@@ -175,7 +155,7 @@ if( isset($_POST['status']) ) {
         http_response_code(500);
         //echo "Oops! Hubo un error no pudimos mandar su mensaje.";
     }
-}
+}*/
 $ID = $_GET['id'];
 $follow_up = $wpdb->get_results("SELECT * FROM follow_ups WHERE follow_up_id =".$ID." LIMIT 1");
 $follow_up = $follow_up[0];
@@ -199,7 +179,7 @@ switch( $follow_up->status_id ) {
         break;
 }
 ?>
-<form action="<?php echo (the_permalink().'?id='.$ID); ?>" method="post">
+<form action="<?php echo home_url().'/submitsolicitor/?id='.$ID;?>" method="post" enctype="multipart/form-data">
     <input type="hidden" value="<?php echo($ID)?>" name="follow_up_id" id="follow_up_id">
     <div class="wrapper registro seguimiento spacing">
         <div class="container">
@@ -299,6 +279,7 @@ switch( $follow_up->status_id ) {
                                 <div class="table-cell">
                                     <label for="pdf_file">Cambiar PDF</label>
                                     <input type="file" name="pdf_file" id="pdf_file">
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="25000000"/>
                                 </div>
                             </div>
                         </div>
@@ -336,7 +317,7 @@ switch( $follow_up->status_id ) {
                     </div>
                     <div class="clearfix"></div>
                     <div class="text-center actualizar-solicitud">
-                        <input class="green-btn white" type="submit" value="Actualizar">
+                        <input class="green-btn white" type="submit" name="update" id="update" value="Actualizar">
                     </div>
                 </div>
             </div>

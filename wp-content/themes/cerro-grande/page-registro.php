@@ -119,16 +119,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <!--<div class="col-sm-6">
-<label for="status">Estatus</label>
-<select name="status" id="status">
-<?php $statuses = $wpdb->get_results("SELECT status_id, name FROM statuses");
-foreach($statuses as $status){ ?>
-<option value="<?php echo $status->brand_type_id ?>"><?php echo $status->name ?></option>
-<?php }?>
-</select>
-</div>
--->
                     <div class="col-sm-6">
                         <label for="text">Comentarios</label>
                         <textarea name="text" id="text" cols="30" rows="5"></textarea>
@@ -136,10 +126,11 @@ foreach($statuses as $status){ ?>
                     <div class="col-sm-6">
                         <label for="pdf_file">PDF</label>
                         <input type="file" name="pdf_file" id="pdf_file">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="25000000"/>
                     </div>
                 </div>
                 <div class="nav" role="tablist">
-                    <input class="black btn center-block" type="submit" name="submit" id="submit" value="Guardar">
+                    <input class="black btn center-block" type="submit" name="create" id="create" value="Guardar">
                 </div>
             </div>
         </form>
