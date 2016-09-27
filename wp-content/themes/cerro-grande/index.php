@@ -18,6 +18,7 @@
 
         <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
         <section class="section" id="section0">
+            <a href="http://cerrogrande.law/en" class="flag flag-icon-background flag-icon-gb"></a>
             <nav class="main-nav text-center">
                 <div class="navbar-brand">
                     <a href="#banner"><img src="<?php echo bloginfo('template_url').'/';?>img/logo.png" class="img-responsive center-block" alt="Cerro Grande Logo"></a>
@@ -714,22 +715,22 @@
                         </div>
                         <div class="modal-body">
                             <?php
-                                $args = array(
-                                    'echo'           => true,
-                                    'remember'       => true,
-                                    'form_id'        => 'loginform',
-                                    'id_username'    => 'user_login',
-                                    'id_password'    => 'user_pass',
-                                    'id_remember'    => 'rememberme',
-                                    'id_submit'      => 'wp-submit',
-                                    'label_username' => __( 'Usuario' ),
-                                    'label_password' => __( 'Contraseña' ),
-                                    'label_remember' => __( 'Recuerdame' ),
-                                    'label_log_in'   => __( 'Acceder' ),
-                                    'value_username' => '',
-                                    'value_remember' => false
-                                );
-                                wp_login_form( $args ); 
+    $args = array(
+    'echo'           => true,
+    'remember'       => true,
+    'form_id'        => 'loginform',
+    'id_username'    => 'user_login',
+    'id_password'    => 'user_pass',
+    'id_remember'    => 'rememberme',
+    'id_submit'      => 'wp-submit',
+    'label_username' => __( 'Usuario' ),
+    'label_password' => __( 'Contraseña' ),
+    'label_remember' => __( 'Recuerdame' ),
+    'label_log_in'   => __( 'Acceder' ),
+    'value_username' => '',
+    'value_remember' => false
+);
+                    wp_login_form( $args ); 
                             ?>
                         </div>
                     </div>

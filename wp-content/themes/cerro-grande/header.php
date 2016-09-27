@@ -8,7 +8,8 @@
         <?php wp_head(); ?>
         <link rel="stylesheet" href="<?php echo bloginfo('template_url').'/';?>css/bootstrap.min.css">
         <link rel="stylesheet" href="<?php echo bloginfo('template_url').'/';?>css/jquery.fullPage.css">
-        <link rel="stylesheet" href="<?php echo bloginfo('template_url').'/';?>css/effect1.css" />
+        <link rel="stylesheet" href="<?php echo bloginfo('template_url').'/';?>css/effect1.css">
+        <link rel="stylesheet" href="<?php echo bloginfo('template_url').'/';?>css/flag-icon.min.css">
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="<?php echo bloginfo('stylesheet_url');?>">

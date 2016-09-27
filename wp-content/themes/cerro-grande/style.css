@@ -321,6 +321,15 @@ h3.heading {
     text-align: right;
 }
 
+.flag-icon-background {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    z-index: 99998;
+}
+
 /* PRE-LOADER */
 .ip-header {
     background-color: #000;
@@ -1880,6 +1889,12 @@ font-size: 18px;
 }
 
 @media(max-width: 767px) {
+    .flag-icon-background {
+        top: 5px;
+        right: 5px;
+        width: 38px;
+        height: 38px;
+    }
     /***SETTING ANIMATIONS***/
     #section7 .heading,
     #section5 .main.heading,
