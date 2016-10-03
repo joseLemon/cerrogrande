@@ -125,7 +125,7 @@ switch( $follow_ups->status_id ) {
                         <tr>
                             <td><?php echo $follow_ups->comments; ?></td>
                             <td>
-                                PDF:
+                                PDF:<br>
                                 <?php
                                 $pdf_file = get_template_directory_uri().'/file_uploads/'.$follow_up_id.'.pdf';
                                 if(pdf_exists($pdf_file)) {
