@@ -2212,6 +2212,13 @@ font-size: 18px;
     #section5 .post .post-title h3 {
         padding: 0!important;
         margin: 5px 0;
+        position: relative;
+    }
+    #section5 .post .post-title {
+        position: absolute;
+        bottom: 0;
+        background-color: rgba(116,112,113,.6);
+        width: 100%;
     }
     #section7 .col-sm-7 {
         padding-left: 0;
