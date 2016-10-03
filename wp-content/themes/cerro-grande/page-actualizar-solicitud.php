@@ -179,10 +179,11 @@ switch( $follow_up->status_id ) {
         break;
 }
 ?>
-<form action="<?php echo home_url().'/submitsolicitor/?id='.$ID;?>" method="post" enctype="multipart/form-data">
+<form action="<?php echo home_url().'/submitsolicitor/?id='.$ID;?>" method="post" enctype="multipart/form-data" id="updateForm">
     <input type="hidden" value="<?php echo($ID)?>" name="follow_up_id" id="follow_up_id">
     <div class="wrapper seguimiento spacing">
         <div class="container">
+            <div name="error" id="error" class="alert alert-danger hidden"></div>
             <div class="form-container active">
                 <div class="light-spacing">
                     <h1 class="header blue text-center">Seguimiento</h1>
@@ -192,7 +193,23 @@ switch( $follow_up->status_id ) {
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
+                                    <th>Apellido Paterno</th>
+                                    <th>Apellido Materno</th>
                                     <th>Asunto</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text">
+                                <tr>
+                                    <td><input type="text" name="solicitor_name" id="solicitor_name" value="<?php echo $follow_up->solicitor_name; ?>"></td>
+                                    <td><input type="text" name="last_name" id="last_name" value="<?php echo $follow_up->last_name; ?>"></td>
+                                    <td><input type="text" name="m_last_name" id="m_last_name" value="<?php echo $follow_up->m_last_name; ?>"></td>
+                                    <td><input type="text" name="subject" id="subject" value="<?php echo $follow_up->subject; ?>"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="followUp-table-view" style="width: 100%;">
+                            <thead>
+                                <tr>
                                     <th>Razón Social</th>
                                     <th>Fecha de Nacimiento</th>
                                     <th>Teléfono</th>
@@ -201,12 +218,10 @@ switch( $follow_up->status_id ) {
                             </thead>
                             <tbody class="text">
                                 <tr>
-                                    <td><input type="text" disabled value="<?php echo $follow_up->solicitor_name." ".$follow_up->last_name." ".$follow_up->m_last_name; ?>"></td>
-                                    <td><input type="text" name="subject" value="<?php echo $follow_up->subject; ?>"></td>
-                                    <td><input type="text" name="social" value="<?php echo $follow_up->social_reason; ?>"></td>
+                                    <td><input type="text" name="social" id="social" value="<?php echo $follow_up->social_reason; ?>"></td>
                                     <td><input type="text" name="date" id="date" value="<?php echo date('d/m/Y',strtotime($follow_up->birthday)); ?>"></td>
-                                    <td><input type="text" name="phone" value="<?php echo $follow_up->phone; ?>"></td>
-                                    <td><input type="text" name="email" value="<?php echo $follow_up->email; ?>"></td>
+                                    <td><input type="text" name="phone" id="phone" value="<?php echo $follow_up->phone; ?>"></td>
+                                    <td><input type="text" name="email" id="email" value="<?php echo $follow_up->email; ?>"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -230,11 +245,11 @@ switch( $follow_up->status_id ) {
                             </thead>
                             <tbody class="text">
                                 <tr>
-                                    <td><input type="text" name="street" value="<?php echo $follow_up->street; ?>"></td>
-                                    <td><input type="text" name="exterior" value="<?php echo $follow_up->exterior_num; ?>"></td>
-                                    <td><input type="text" name="interior" value="<?php echo $follow_up->interior_num; ?>"></td>
-                                    <td><input type="text" name="postal" value="<?php echo $follow_up->postal_code; ?>"></td>
-                                    <td><input type="text" name="colony" value="<?php echo $follow_up->colony; ?>"></td>
+                                    <td><input type="text" name="street" id="street" value="<?php echo $follow_up->street; ?>"></td>
+                                    <td><input type="text" name="exterior" id="exterior" value="<?php echo $follow_up->exterior_num; ?>"></td>
+                                    <td><input type="text" name="interior" id="interior" value="<?php echo $follow_up->interior_num; ?>"></td>
+                                    <td><input type="text" name="postal" id="postal" value="<?php echo $follow_up->postal_code; ?>"></td>
+                                    <td><input type="text" name="colony" id="colony" value="<?php echo $follow_up->colony; ?>"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -257,9 +272,9 @@ switch( $follow_up->status_id ) {
                             </thead>
                             <tbody class="text">
                                 <tr>
-                                    <td><input type="text" name="town" value="<?php echo $follow_up->town; ?>"></td>
-                                    <td><input type="text" name="locality" value="<?php echo $follow_up->locality; ?>"></td>
-                                    <td><input type="text" name="state" value="<?php echo $follow_up->state; ?>"></td>
+                                    <td><input type="text" name="town" id="town" value="<?php echo $follow_up->town; ?>"></td>
+                                    <td><input type="text" name="locality" id="country" value="<?php echo $follow_up->locality; ?>"></td>
+                                    <td><input type="text" name="state" id="state" value="<?php echo $follow_up->state; ?>"></td>
                                     <td><input type="text" name="country" value="<?php echo $follow_up->country; ?>"></td>
                                     <td></td>
                                 </tr>
@@ -268,7 +283,7 @@ switch( $follow_up->status_id ) {
                         <div class="row no-margin">
                             <div class="col-sm-6" style="padding: 0;">
                                 <h3 class="table-header">Comentarios</h3>
-                                <textarea class="table-textarea" name="comments" id="comments" cols="30" rows="5" placeholder="Comentarios" maxlength="254"><?php echo $follow_up->comments; ?></textarea>
+                                <textarea class="table-textarea" name="text" id="text" cols="30" rows="5" placeholder="Comentarios" maxlength="254"><?php echo $follow_up->comments; ?></textarea>
                             </div>
                             <div class="col-sm-6" style="padding: 0;">
                                 <h3 class="table-header">PDF</h3>

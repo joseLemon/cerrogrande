@@ -28,9 +28,9 @@ switch( $follow_ups->status_id ) {
         break;
 }
 ?>
-<div class="wrapper registro seguimiento spacing">
+<div class="wrapper registro seguimiento user-view spacing">
     <div class="container">
-        <div class="form-container active light-spacing">
+        <div class="form-container active spacing">
             <h1 class="header blue text-center">Seguimiento</h1>
             <div class="row text-center margin-bottom followUp-status">
                 <div class="col-sm-4 margin-top">
@@ -46,7 +46,7 @@ switch( $follow_ups->status_id ) {
                     <hr class="left">
                 </div>
             </div>
-            <div class="row light-spacing">
+            <div class="row">
                 <h3 class="table-header">Asunto</h3>
                 <table class="followUp-table-view" style="width: 100%;">
                     <tbody>
@@ -125,6 +125,7 @@ switch( $follow_ups->status_id ) {
                         <tr>
                             <td><?php echo $follow_ups->comments; ?></td>
                             <td>
+                                PDF:
                                 <?php
                                 $pdf_file = get_template_directory_uri().'/file_uploads/'.$follow_up_id.'.pdf';
                                 if(pdf_exists($pdf_file)) {

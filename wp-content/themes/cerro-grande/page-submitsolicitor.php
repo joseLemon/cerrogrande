@@ -25,7 +25,8 @@ if(isset($_POST['create'])) {
 if(isset($_POST['update'])) {
     //$wpdb->query("UPDATE follow_ups SET  status_id =  '".$_POST['status']."', comments = '".$_POST['comments']."'  WHERE  follow_ups.follow_up_id =".$_POST['follow_up_id'].";");
     $query = "UPDATE follow_ups
-    SET status_id = '".$_POST['status']."', subject = '".$array['subject']."', social_reason = '".$array['social']."',
+    SET solicitor_name = '".$_POST['solicitor_name']."', last_name = '".$_POST['last_name']."', m_last_name = '".$_POST['m_last_name']."',
+    status_id = '".$_POST['status']."', subject = '".$array['subject']."', social_reason = '".$array['social']."',
     birthday = '".$date."', phone = '".$array['phone']."', email = '".$array['email']."', street = '".$array['street']."',
     exterior_num = '".$array['exterior']."', interior_num ='".$array['interior']."', postal_code = '".$array['postal']."',
     colony = '".$array['colony']."', town = '".$array['town']."', locality = '".$array['locality']."', state = '".$array['state']."',
