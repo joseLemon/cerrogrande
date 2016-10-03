@@ -28,6 +28,7 @@ $('input[type=file]').bind('change', function() {
 
 function validateOne(){
     var errors ="";
+    subject = document.getElementById("subject").value;
     name = document.getElementById("solicitor_name").value;
     lastName = document.getElementById("last_name").value;
     mLastName = document.getElementById("m_last_name").value;
@@ -41,16 +42,24 @@ function validateOne(){
     colony = document.getElementById("colony").value;
     town = document.getElementById("town").value;
     country = document.getElementById("country").value;
+
     if( name == null || name.length == 0 || /^\s+$/.test(name) ) {
         errors += "El nombre es obligatorio<br>";
-    }else {
+    } else {
         if(name.length > 35){
             errors += "El numero de letras máximo para el nombre es de 35<br>";
         }
     }
+    if( subject == null || subject.length == 0 || /^\s+$/.test(name) ) {
+        errors += "El asunto es obligatorio<br>";
+    } else {
+        if(subject.length > 140){
+            errors += "El numero de letras máximo para el asunto es de 140<br>";
+        }
+    }
     if( lastName == null || lastName.length == 0 || /^\s+$/.test(lastName) ) {
         errors += "El apellido paterno es obligatorio<br>";
-    }else {
+    } else {
         if(lastName.length > 35){
             errors += "El numero de letras máximo para el Apellido es de 35<br>";
         }
@@ -63,7 +72,7 @@ function validateOne(){
     }
     if( date == null || date.length == 0 || /^\s+$/.test(date) ) {
         errors += "La fecha de nacimiento es obligatoria<br>";
-    }else {
+    } else {
         var regExPattern = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
         if (!(date.match(regExPattern))) {
             errors += "Introduce una fecha de nacimiento en formato correcto<br>";
@@ -71,7 +80,7 @@ function validateOne(){
     }
     if( phone == null || phone.length == 0 || /^\s+$/.test(phone) ) {
         errors += "El teléfono es obligatorio<br>";
-    }else{
+    } else{
         var phonePattern=/^([0-9]+){10,15}$/;
         if (!(phone.match(phonePattern))) {
             errors +=  "Introduce tu número telefónico con clave lada mínimo 10 caracteres<br>";
@@ -79,7 +88,7 @@ function validateOne(){
     }
     if( email == null || email.length == 0 || /^\s+$/.test(email) ) {
         errors += "El correo electrónico es obligatorio<br>";
-    }else{
+    } else{
         var emailPattern=/^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
         if (!(email.match(emailPattern))) {
             errors +=  "El correo electrónico debe tener un formato válido<br>";
@@ -87,35 +96,35 @@ function validateOne(){
     }
     if( street == null || street.length == 0 || /^\s+$/.test(street) ) {
         errors += "La calle es obligatoria<br>";
-    }else {
+    } else {
         if(street.length > 95){
             errors += "El numero de letras máximo para la calle es de 95<br>";
         }
     }
     if( exterior == null || exterior.length == 0 || /^\s+$/.test(exterior) ) {
         errors += "El numero exterior es obligatorio<br>";
-    }else {
+    } else {
         if(exterior.length > 10){
             errors += "El numero de caracteres máximo para el numero exterior es de 10<br>";
         }
     }
     if( postal == null || postal.length == 0 || /^\s+$/.test(postal) ) {
         errors += "El codigo postal es obligatorio<br>";
-    }else {
+    } else {
         if(postal.length > 10){
             errors += "El numero de caracteres máximo para el codigo postal es de 10<br>";
         }
     }
     if( colony == null || colony.length == 0 || /^\s+$/.test(colony) ) {
         errors += "La colonia es obligatoria<br>";
-    }else {
+    } else {
         if(colony.length > 95){
             errors += "El numero de caracteres máximo para la colonia es de 95<br>";
         }
     }
     if( town == null || town.length == 0 || /^\s+$/.test(town) ) {
         errors += "El municipio es obligatorio<br>";
-    }else {
+    } else {
         if(town.length > 95){
             errors += "El numero de caracteres máximo para la colonia es de 95<br>";
         }
@@ -142,7 +151,17 @@ function validateOne(){
 }
 
 $('#updateForm').submit(function (e) {
-    validateTwo(e);
+    $validation = validateOne(e);
+    if(!$validation) {
+        e.preventDefault();
+    }
+});
+
+$('#solicitorForm').submit(function (e) {
+    $validation = validateOne(e);
+    if(!$validation) {
+        e.preventDefault();
+    }
 });
 
 function validateTwo(e){
@@ -159,20 +178,13 @@ function validateTwo(e){
         //Cambiar al segundo tab
         $('#validationTwo').attr('href', '#giro');
         $('#error').removeClass('active').addClass('hidden');
-    }else{
+    } else{
         //colorear los campos mal ingresados
         $("#error").html(errors);
         $("#error").removeClass('hidden').addClass('active').html("Lo sentimos :( <br>"+errors);
         e.preventDefault();
     }
 }
-
-$('#solicitorForm').submit(function (e) {
-    $validation = validateOne(e);
-    if(!$validation) {
-        e.preventDefault();
-    }
-});
 
 function validateTree(e){
     var errors ="";
@@ -186,7 +198,7 @@ function validateTree(e){
     country = document.getElementById("b_country").value;
     if( description == null || description.length == 0 || /^\s+$/.test(description) ) {
         errors += "La descripción es obligatoria<br>";
-    }else {
+    } else {
         if(description.length > 500){
             errors += "El numero de letras máximo para la descripcion es de 500<br>";
         }
@@ -194,35 +206,35 @@ function validateTree(e){
     if(used) {
         if( street == null || street.length == 0 || /^\s+$/.test(street) ) {
             errors += "La calle es obligatoria<br>";
-        }else {
+        } else {
             if(street.length > 95){
                 errors += "El numero de letras máximo para la calle es de 95<br>";
             }
         }
         if( exterior == null || exterior.length == 0 || /^\s+$/.test(exterior) ) {
             errors += "El numero exterior es obligatorio<br>";
-        }else {
+        } else {
             if(exterior.length > 10){
                 errors += "El numero de caracteres máximo para el numero exterior es de 10<br>";
             }
         }
         if( postal == null || postal.length == 0 || /^\s+$/.test(postal) ) {
             errors += "El codigo postal es obligatorio<br>";
-        }else {
+        } else {
             if(postal.length > 10){
                 errors += "El numero de caracteres máximo para el codigo postal es de 10<br>";
             }
         }
         if( colony == null || colony.length == 0 || /^\s+$/.test(colony) ) {
             errors += "La colonia es obligatoria<br>";
-        }else {
+        } else {
             if(colony.length > 95){
                 errors += "El numero de caracteres máximo para la colonia es de 95<br>";
             }
         }
         if( town == null || town.length == 0 || /^\s+$/.test(town) ) {
             errors += "El municipio es obligatorio<br>";
-        }else {
+        } else {
             if(town.length > 95){
                 errors += "El numero de caracteres máximo para la colonia es de 95<br>";
             }
@@ -254,7 +266,7 @@ function validateTree(e){
         //Cambiar al segundo tab
         $('#error').removeClass('active').addClass('hidden');
 
-    }else{
+    } else{
         //colorear los campos mal ingresados
         $("#error").html(errors);
         $("#error").removeClass('hidden').addClass('active').html("Lo sentimos :( <br>"+errors);
@@ -266,33 +278,3 @@ function validateTree(e){
         }, 300 );
     }
 }
-
-/*function brand_options() {
-    switch( $('#options option:selected').val() ) {
-        case '1':
-            $('#design').addClass('hidden');
-            $('#three_dimensional').addClass('hidden');
-            $('#text').removeClass('hidden');
-            break;
-        case '2':
-            $('#design').removeClass('hidden');
-            $('#three_dimensional').addClass('hidden');
-            $('#text').removeClass('hidden');
-            break;
-        case '3':
-            $('#design').addClass('hidden');
-            $('#three_dimensional').removeClass('hidden');
-            $('#text').addClass('hidden');
-            break;
-        case '4':
-            $('#design').addClass('hidden');
-            $('#three_dimensional').removeClass('hidden');
-            $('#text').removeClass('hidden');
-            break;
-        case '5':
-            $('#design').removeClass('hidden');
-            $('#three_dimensional').removeClass('hidden');
-            $('#text').addClass('hidden');
-            break;
-    }
-}*/

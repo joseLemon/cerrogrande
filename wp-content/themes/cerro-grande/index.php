@@ -18,7 +18,6 @@
 
         <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
         <section class="section" id="section0">
-            <a href="http://cerrogrande.law/en" class="flag flag-icon-background flag-icon-gb"></a>
             <nav class="main-nav text-center">
                 <div class="navbar-brand">
                     <a href="#banner"><img src="<?php echo bloginfo('template_url').'/';?>img/logo.png" class="img-responsive center-block" alt="Cerro Grande Logo"></a>
@@ -48,6 +47,7 @@
                         <li><a href="#contacto">Contacto</a></li>
                         <li><a href="#login">Login</a></li>
                         <li><a href="#legal">Legal</a></li>
+                        <li class="flag"><a href="http://cerrogrande.law/en" class="flag flag-icon-background flag-icon-gb"></a></li>
                     </ul>
                 </div>
                 <div class="navbar-social">

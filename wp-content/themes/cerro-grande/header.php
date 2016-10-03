@@ -52,8 +52,28 @@
                             </ul>
                         </li>
                         <li><a href="<?php if(!is_front_page()) { echo 'index'; } ?>#contacto">Contacto</a></li>
+                        <?php if(!is_user_logged_in()) { ?>
                         <li><a href="<?php if(!is_front_page()) { echo 'index'; } ?>#login">Login</a></li>
+                        <?php } else if(current_user_can('administrator')) { ?>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Admin</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="registro">Registrar Solicitud</a></li>
+                                <li><a href="lista-seguimientos">Lista de Seguimientos</a></li>
+                                <li><a href="<?php echo wp_logout_url(home_url()); ?>">Cerrar Sesión</a></li>
+                            </ul>
+                        </li>
+                        <?php } else { ?>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Mi Cuenta</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="mi-cuenta">Mis Solicitudes</a></li>
+                                <li><a href="<?php echo wp_logout_url(home_url()); ?>">Cerrar Sesión</a></li>
+                            </ul>
+                        </li>
+                        <?php } ?>
                         <li><a href="<?php if(!is_front_page()) { echo 'index'; } ?>#legal">Legal</a></li>
+                        <li class="flag"><a href="http://cerrogrande.law/en" class="flag flag-icon-background flag-icon-gb center-block vertical-align"></a></li>
                     </ul>
                 </div>
             </div>

@@ -4,6 +4,11 @@ $current_user = wp_get_current_user();
 $ID = $current_user->ID;
 $follow_ups = $wpdb->get_results("SELECT follow_up_id, subject, social_reason, solicitor_name, last_name, name AS status_name FROM follow_ups JOIN statuses ON statuses.status_id = follow_ups.status_id WHERE user_id =".$ID);
 $statuses = $wpdb->get_results("SELECT * FROM statuses");
+if($current_user->user_firstname != '') {
+    $name = $current_user->user_firstname;
+} else {
+    $name = $current_user->user_login;
+}
 ?>
     <div class="registro wrapper">
         <div class="container spacing">
@@ -17,7 +22,8 @@ $statuses = $wpdb->get_results("SELECT * FROM statuses");
             <div class="form-container active">
                 <div class="row no-margin spacing">
                     <div class="row no-margin">
-                        <h2 class="blue text-center">Datos de Solicitud</h2>
+                        <h1 class="text-center">Bienvenido(a) <?php echo $name; ?></h1>
+                        <h2 class="blue text-center">Datos de tus Solicitudes</h2>
                         <div class="col-sm-4"></div>
                     </div>
                     <div class="col-sm-12">
