@@ -23,4 +23,29 @@ function pdf_exists($url){
     $headers=get_headers($url);
     return stripos($headers[0],"200 OK")?true:false;
 }
+
+function my_show_extra_profile_fields( $user ) {
+?>
+	<h3>Información de Idioma</h3>
+	<table class="form-table">
+		<tr>
+			<th><label for="twitter">Inglés</label></th>
+			<td>
+				<input type="checkbox" <?php if(get_the_author_meta( 'activate_en', $user->ID ) == '1') echo 'checked'; ?> name="activate_en" id="activate_en"/><br />
+				<span class="description">Activar lenguaje Inglés.</span>
+			</td>
+		</tr>
+	</table>
+<?php }
+add_action( 'show_user_profile', 'my_show_extra_profile_fields' );
+add_action( 'edit_user_profile', 'my_show_extra_profile_fields' );
+
+function my_save_extra_profile_fields( $user_id ) {
+	if ( !current_user_can( 'edit_user', $user_id ) )
+		return false;
+	/* Copy and paste this line for additional fields. Make sure to change 'twitter' to the field ID. */
+	update_usermeta( $user_id, 'activate_en', $_POST['activate_en'] ? "1" : "0" );
+}
+add_action( 'personal_options_update', 'my_save_extra_profile_fields' );
+add_action( 'edit_user_profile_update', 'my_save_extra_profile_fields' );
 ?>

@@ -71,13 +71,9 @@
         <section class="section text-center" id="section1">
             <div class="slide" data-anchor="slide1" id="slide1">
                 <div class="container spacing">
-                    <h1 class="heading">LA FIRMA</h1>
+                    <h1 class="heading"><?php echo CFS()->get('nosotros_title');?></h1>
                     <p class="text">
-                        <strong>Cerro Grande Corporativo</strong> ® nació en 2013, con el espíritu de <strong>contribuir a la propiedad intelectual del mundo</strong>, y con un estilo que fuera <strong>más allá de lo convencional</strong>, rompiendo paradigmas en la prestación de servicios legales con su trato, contenidos y resultados.
-                        <br><br>
-                        Nos hemos posicionado como una <strong>firma líder en el norte del país</strong>, siendo actores y promotores de la cultura de la Propiedad Intelectual, <strong>impulsando y protegiendo</strong> temas de gran importancia para la <strong>creatividad, originalidad y prestigio</strong> de las personas y empresas. 
-                        <br>
-                        Este liderazgo y prestigio han sido reconocido por la <strong>Asociación Mexicana para la Protección de Propiedad Intelectual</strong> (AMPPI) – <a href="http://www.amppi.org.mx">www.amppi.org.mx</a>, al permitirnos ser la <strong>primer firma chihuahuense en contar su aval</strong>.
+                        <?php echo CFS()->get('nosotros_text');?>
                     </p>
                 </div>
             </div>
