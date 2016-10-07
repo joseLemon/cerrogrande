@@ -16,8 +16,6 @@
         </div>
 
         <?php wp_footer(); ?>
-        
-        <script src="<?php echo bloginfo('template_url').'/';?>js/bootstrap.min.js"></script>
         <script src="<?php echo bloginfo('template_url').'/';?>js/scrolloverflow.js"></script>
         <script src="<?php echo bloginfo('template_url').'/';?>js/jquery.fullPage.js"></script>
         <script src="<?php echo bloginfo('template_url').'/';?>js/Google-Maps.js"></script>

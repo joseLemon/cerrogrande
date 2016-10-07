@@ -26,26 +26,65 @@ function pdf_exists($url){
 
 function my_show_extra_profile_fields( $user ) {
 ?>
-	<h3>Información de Idioma</h3>
-	<table class="form-table">
-		<tr>
-			<th><label for="twitter">Inglés</label></th>
-			<td>
-				<input type="checkbox" <?php if(get_the_author_meta( 'activate_en', $user->ID ) == '1') echo 'checked'; ?> name="activate_en" id="activate_en"/><br />
-				<span class="description">Activar lenguaje Inglés.</span>
-			</td>
-		</tr>
-	</table>
+<h3>Información de Idioma</h3>
+<table class="form-table">
+    <tr>
+        <th><label for="twitter">Inglés</label></th>
+        <td>
+            <input type="checkbox" <?php if(get_the_author_meta( 'activate_en', $user->ID ) == '1') echo 'checked'; ?> name="activate_en" id="activate_en"/><br />
+            <span class="description">Activar lenguaje Inglés.</span>
+        </td>
+    </tr>
+</table>
 <?php }
 add_action( 'show_user_profile', 'my_show_extra_profile_fields' );
 add_action( 'edit_user_profile', 'my_show_extra_profile_fields' );
 
 function my_save_extra_profile_fields( $user_id ) {
-	if ( !current_user_can( 'edit_user', $user_id ) )
-		return false;
-	/* Copy and paste this line for additional fields. Make sure to change 'twitter' to the field ID. */
-	update_usermeta( $user_id, 'activate_en', $_POST['activate_en'] ? "1" : "0" );
+    if ( !current_user_can( 'edit_user', $user_id ) )
+        return false;
+    /* Copy and paste this line for additional fields. Make sure to change 'twitter' to the field ID. */
+    update_usermeta( $user_id, 'activate_en', $_POST['activate_en'] ? "1" : "0" );
 }
 add_action( 'personal_options_update', 'my_save_extra_profile_fields' );
 add_action( 'edit_user_profile_update', 'my_save_extra_profile_fields' );
+
+if(isset($_POST['acceptLang'])) {
+    $_SESSION['lang'] = $_POST['selectLang'];
+    $_SESSION['loadModal'] = false;
+} else {
+    session_start();
+    $_SESSION['lang'] = 'es';
+    $_SESSION['loadModal'] = true;
+}
+
+if($_SESSION['lang'] == 'en') {
+    $laFirma = 'The Firm';
+    $pilares = 'Pillars & Policies';
+    $participacion = 'Involvement';
+    $socios = 'Partners';
+    $areas = 'Practice areas';
+    $presencia = 'Presence';
+    $recientes = 'Recent';
+    $mas = 'More';
+    $contacto = 'Contact';
+    $cuenta = 'My account';
+    $solicitudes = 'Mis applications';
+    $logout = 'Log out';
+} else {
+    $laFirma = 'La Firma';
+    $pilares = 'Pilares y Políticas';
+    $participacion = 'Participación';
+    $socios = 'Socios';
+    $areas = 'Áreas de práctica';
+    $presencia = 'Presencia';
+    $recientes = 'Recientes';
+    $mas = 'Ver más';
+    $contacto = 'Contacto';
+    /*$registrar = 'Registrar solicitud';
+    $lista = 'Lista de seguimientos';*/
+    $cuenta = 'Mi cuenta';
+    $solicitudes = 'Mis solicitudes';
+    $logout = 'Cerrar sesión';
+}
 ?>

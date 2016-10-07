@@ -25,26 +25,26 @@
                 <div class="navbar-collapse">
                     <ul class="navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">La Firma</a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><?php echo $laFirma; ?></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#firma/slide1">La Firma</a></li>
-                                <li><a href="#firma/slide2">Pilares y Políticas</a></li>
-                                <li><a href="#firma/slide3">Participación</a></li>
+                                <li><a href="#firma/slide1"><?php echo $laFirma; ?></a></li>
+                                <li><a href="#firma/slide2"><?php echo $pilares; ?></a></li>
+                                <li><a href="#firma/slide3"><?php echo $participacion; ?></a></li>
                                 <li><a href="#firma/slide4">Socios</a></li>
                             </ul>
                         </li>
-                        <li class="hidden"><a href="#firma">La Firma</a></li>
-                        <li><a href="#practica">Áreas de práctica</a></li>
-                        <li><a href="#presencia">Presencia</a></li>
+                        <li class="hidden"><a href="#firma"><?php echo $laFirma; ?></a></li>
+                        <li><a href="#practica"><?php echo $areas; ?></a></li>
+                        <li><a href="#presencia"><?php echo $presencia; ?></a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Blog</a>
                             <ul class="dropdown-menu">
-                                <li><a href="#blog">Recientes</a></li>
-                                <li><a href="blog">Ver más</a></li>
+                                <li><a href="#blog"><?php echo $recientes; ?></a></li>
+                                <li><a href="blog"><?php echo $mas; ?></a></li>
                             </ul>
                         </li>
                         <li class="hidden"><a href="#blog">Blog</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
+                        <li><a href="#contacto"><?php echo $contacto; ?></a></li>
                         <li><a href="#login">Login</a></li>
                         <li><a href="#legal">Legal</a></li>
                         <li class="flag"><a href="http://cerrogrande.law/en" class="flag flag-icon-background flag-icon-gb"></a></li>
@@ -71,29 +71,23 @@
         <section class="section text-center" id="section1">
             <div class="slide" data-anchor="slide1" id="slide1">
                 <div class="container spacing">
-                    <h1 class="heading"><?php echo CFS()->get('nosotros_title');?></h1>
+                    <h1 class="heading"><?php echo $_SESSION['lang'] == 'en' ? CFS()->get('nosotros_title_en') : CFS()->get('nosotros_title');?></h1>
                     <p class="text">
-                        <?php echo CFS()->get('nosotros_text');?>
+                        <?php echo $_SESSION['lang'] == 'en' ? CFS()->get('nosotros_text_en') : CFS()->get('nosotros_text');?>
                     </p>
                 </div>
             </div>
             <div class="slide" data-anchor="slide2" id="slide2">
                 <div class="container spacing">
-                    <h3 class="heading">PILARES Y POLÍTICAS</h3>
+                    <h3 class="heading"><?php echo $_SESSION['lang'] == 'en' ? CFS()->get('pilares_title_en') : CFS()->get('pilares_title');?></h3>
                     <p class="text">
-                        <br>
-                        Creemos en la <strong>preparación constante</strong> como dinámica, en la <strong>ética y la honestidad</strong> como <strong>valores fundamentales</strong>, y en el profesionalismo, a través de un servicio personalizado como la fórmula.
-                        <br><br>
-                        <strong>Nos definen los resultados y nos motiva</strong> atender las inquietudes de nuestros clientes como si fueran propias.
-                        <br><br>
-                        Desde luego, <strong>estamos comprometidos con la responsabilidad social</strong>, por eso brindamos servicios PROBONO a diversas Organizaciones de la Sociedad Civil.
-
+                        <?php echo $_SESSION['lang'] == 'en' ? CFS()->get('pilares_text_en') : CFS()->get('pilares_text');?>
                     </p>
                 </div>
             </div>
             <div class="slide" data-anchor="slide3" id="slide3">
                 <div class="container spacing">
-                    <h3 class="heading">Participamos activamente en:</h3>
+                    <h3 class="heading"><?php echo $_SESSION['lang'] == 'en' ? CFS()->get('participamos_title_en') : CFS()->get('participamos_title');?></h3>
                     <div class="row no-margin">
                         <div class="col-sm-3"><img class="img-responsive center-block vertical-align" src="<?php echo bloginfo('template_url').'/';?>img/participar/1.png" alt="cfosc"></div>
                         <div class="col-sm-3"><img class="img-responsive center-block vertical-align" src="<?php echo bloginfo('template_url').'/';?>img/participar/2.png" alt="canaco"></div>
@@ -110,7 +104,7 @@
             </div>
             <div class="slide" data-anchor="slide4" id="slide4">
                 <div class="container spacing socios">
-                    <h3 class="heading">SOCIOS</h3>
+                    <h3 class="heading"><?php echo $_SESSION['lang'] == 'en' ? CFS()->get('socios_title_en') : CFS()->get('socios_title');?></h3>
                     <div class="col-sm-3 col-xs-6 dropdown">
                         <a href="#" class="dropdown-toggle" type="button" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             <div class="img-container">
@@ -122,23 +116,7 @@
                             <li>
                                 <h4 class="associate-name red-decoration">LIC. LUIS GERARDO HOLGUÍN LERMA</h4>
                                 <p class="associate-info">
-                                    Abogado egresado con Mención
-                                    Honorífica de la Universidad 
-                                    Autónoma de Chihuahua,
-                                    Máster en Propiedad Intelectual e 
-                                    Industrial por la Universidad de 
-                                    Barcelona, España.
-                                    Miembro de la Internet Society 
-                                    Capítulo México (ISOC), contando 
-                                    en su acervo con amplia 
-                                    experiencia en Marcas, Diseños 
-                                    Industriales, Derechos de Autor 
-                                    con enfoque en el entorno digital, 
-                                    Licencias, Contratos, Derechos a la 
-                                    Imagen, Industrias culturales,
-                                    Datos Personales, Sociedades 
-                                    Mercantiles, Negociaciones, 
-                                    Políticas Públicas y Gobierno.
+                                    <?php echo $_SESSION['lang'] == 'en' ? CFS()->get('luis_text_en') : CFS()->get('luis_text');?>
                                     <br><br>
                                     <a href="mailto:luis@cerrogrande.law" class="italic">luis@cerrogrande.law</a>
                                 </p>
@@ -156,23 +134,7 @@
                             <li>
                                 <h4 class="associate-name red-decoration">JOSÉ ANTONIO ARGUELLO ROMERO</h4>
                                 <p class="associate-info">
-                                    Abogado egresado de la Universidad 
-                                    Autónoma de Chihuahua, Máster en 
-                                    Propiedad Intelectual e Industrial por 
-                                    la Universidad de Alicante, España. 
-                                    Miembro de AMPPI y AAAML, 
-                                    Contando en su acervo con amplia 
-                                    experiencia en marcas, patentes, 
-                                    diseños industriales, obras artísticas, 
-                                    literarias y programas de cómputo. 
-                                    Ha asesorado a empresas en 
-                                    contratación nacional e internacional 
-                                    sobre: transferencia de tecnología,
-                                    transmisión y licenciamiento de 
-                                    marcas, know how y derechos de autor, 
-                                    producción cinematográfica, 
-                                    confidencialidad y protección de 
-                                    datos personales.
+                                    <?php echo $_SESSION['lang'] == 'en' ? CFS()->get('jose_text_en') : CFS()->get('jose_text');?>
                                     <br><br>
                                     <a href="mailto:jose@cerrogrande.law" class="italic">jose@cerrogrande.law</a>
                                 </p>
@@ -190,21 +152,7 @@
                             <li>
                                 <h4 class="associate-name red-decoration">JORGE OMAR BELTRÁN GARCÍA</h4>
                                 <p class="associate-info">
-                                    Ingeniero Biotecnólogo por el 
-                                    Instituto Politécnico Nacional, 
-                                    contando en su acervo con amplia 
-                                    experiencia en búsquedas de 
-                                    información tecnológica, dictámenes 
-                                    de patentabilidad, redacción de 
-                                    patentes en áreas biotecnológicas, 
-                                    farmacéuticas, biológicas, químicas, 
-                                    nanociencias, mecánica, robótica y 
-                                    tecnologías verdes, así como de 
-                                    valiosas intervenciones en oficinas 
-                                    de trasnferencias de tecnología, 
-                                    promoviendo el desarrollo y 
-                                    negociación de patentes mexicanas 
-                                    y extranjeras.
+                                    <?php echo $_SESSION['lang'] == 'en' ? CFS()->get('jorge_text_en') : CFS()->get('jorge_text');?>
                                     <br><br>
                                     <a href="mailto:jorge@cerrogrande.law" class="italic">jorge@cerrogrande.law</a>
                                 </p>
@@ -222,20 +170,7 @@
                             <li>
                                 <h4 class="associate-name red-decoration">HUMBERTO CARBAJAL ROMERO</h4>
                                 <p class="associate-info">
-                                    Abogado por la Universidad Autónoma 
-                                    de Chihuahua, con especialización 
-                                    en Comercio Internacional y Calidad 
-                                    por la Universidad Complutense de 
-                                    Madrid. Contando en su acervo con 
-                                    amplia experiencia en franquicias, 
-                                    documentación de procesos, implementación 
-                                    y certificaciones de normas ISO, 
-                                    fungiendo en su trayectoria como 
-                                    consultor, auditor y capacitador en 
-                                    diversos proyectos relacionados con 
-                                    la calidad de cientos de organismos 
-                                    públicos y privados a nivel nacional 
-                                    e internacional.
+                                    <?php echo $_SESSION['lang'] == 'en' ? CFS()->get('humberto_text_en') : CFS()->get('humberto_text');?>
                                     <br><br>
                                     <a href="mailto:humberto@cerrogrande.law" class="italic">humberto@cerrogrande.law</a>
                                 </p>
@@ -252,8 +187,8 @@
         <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
         <section class="section" id="section2">
             <div class="container white spacing">
-                <h1 class="heading text-center">ÁREAS DE PRÁCTICA</h1>
-                <h5 class="sub-heading text-center italic">Nos gusta lo que hacemos y lo hacemos con pasión.</h5>
+                <h1 class="heading text-center"><?php echo $_SESSION['lang'] == 'en' ? CFS()->get('areas_title_en') : CFS()->get('areas_title');?></h1>
+                <h5 class="sub-heading text-center italic"><?php echo $_SESSION['lang'] == 'en' ? CFS()->get('areas_sub_title_en') : CFS()->get('areas_sub_title');?></h5>
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     <div class="row no-margin">
                         <div class="col-md-6">

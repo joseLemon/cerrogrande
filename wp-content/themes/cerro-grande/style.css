@@ -299,6 +299,7 @@ h3.heading {
 
 .seguimiento input[type=submit],
 .login-modal input[type=submit],
+.modal input[type=submit],
 .registro input[type=submit] {
     margin: 0 auto;
     background-color: #3aaa35;
@@ -312,6 +313,7 @@ h3.heading {
 
 .seguimiento input[type=submit]:hover,
 .login-modal input[type=submit]:hover,
+.modal input[type=submit]:hover,
 .registro input[type=submit]:hover {
     background-color: #34952f;
 }
@@ -1374,11 +1376,11 @@ footer {
 }
 
 /* LOGIN MODAL */
-.login-modal {
+.modal {
     font-family: 'AllerLight', sans-serif;
 }
 
-.login-modal .heading,
+.modal .heading,
 .login-modal input {
     margin: 0!important;
 }
@@ -1391,11 +1393,13 @@ footer {
     margin-bottom: 10px!important;
 }
 
-.login-modal input[type=submit] {
+.login-modal input[type=submit],
+.modal input[type=submit] {
     height: auto!important;
     border-radius: 0!important;
     line-height: normal!important;
     border: 0;
+    min-width: 60px;
 }
 
 /* BEGIN REGISTRO */
@@ -1478,7 +1482,7 @@ footer {
     margin: 0;
 }
 
-.form-container input[type="text"], .form-container select, .select2,
+.form-container input[type="text"], .form-container select, .select2, .modal select,
 .respond textarea, .login-modal input[type=text], .login-modal input[type=password] {
     width: 100%;
     padding-left: 15px;
@@ -1498,7 +1502,7 @@ footer {
 
 .registro input[type=text], .registro input[type=email]
 .registro input[type=tel], .registro textarea, .select2,
-.registro select {
+.modal select, .registro select {
     width: 100%;
     padding-left: 15px;
     outline: none;
