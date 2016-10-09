@@ -319,3 +319,13 @@ $(document).ready(function () {
         $(".navbar-collapse").collapse('hide');
     });
 });
+
+$('#country').change(function () {
+    if($(this).val() == 'USA') {
+        $('#state-usa').removeClass('hidden').prop('disabled', false);
+        $('#state').addClass('hidden').prop('disabled', true);
+    } else {
+        $('#state-usa').addClass('hidden').prop('disabled', true);
+        $('#state').removeClass('hidden').prop('disabled', false);
+    }
+});

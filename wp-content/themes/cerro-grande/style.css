@@ -336,6 +336,8 @@ h3.heading {
 .flag-icon-background {
     width: 30px;
     height: 30px!important;
+    border: 0;
+    background-color: transparent;
 }
 
 .flag-icon-background:after {

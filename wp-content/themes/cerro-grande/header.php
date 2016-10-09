@@ -1,5 +1,5 @@
 <?php
-if($_SESSION['lang'] == 'en') {
+if(isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en') {
     $laFirma = 'The Firm';
     $pilares = 'Pillars & Policies';
     $participacion = 'Involvement';
@@ -114,7 +114,17 @@ if($_SESSION['lang'] == 'en') {
                         </li>
                         <?php } ?>
                         <li><a href="<?php if(!is_front_page()) { echo 'index'; } ?>#legal">Legal</a></li>
-                        <li class="flag"><a href="http://cerrogrande.law/en" class="flag flag-icon-background flag-icon-gb center-block vertical-align"></a></li>
+                        <li class="flag">
+                        <?php if(isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en') { ?>
+                        <form action="./" method="POST">
+                            <button type="submit" name="change_es" class="flag flag-icon-background flag-icon-es center-block vertical-align"></button>
+                        </form>
+                        <?php } else { ?>
+                        <form action="./" method="POST">
+                            <button type="submit" name="change_en" class="flag flag-icon-background flag-icon-gb center-block vertical-align"></button>
+                        </form>
+                        <?php } ?>
+                        </li>
                     </ul>
                 </div>
             </div>

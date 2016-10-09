@@ -31,23 +31,35 @@ switch( $follow_ups->status_id ) {
 <div class="wrapper registro seguimiento user-view spacing">
     <div class="container">
         <div class="form-container active spacing">
-            <h1 class="header blue text-center">Seguimiento</h1>
+            <h1 class="header blue text-center">
+                <?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Application Status'
+                    : 'Seguimiento';?>
+            </h1>
             <div class="row text-center margin-bottom followUp-status">
                 <div class="col-sm-4 margin-top">
-                    <p class="gray text-center <?php echo $proceso; ?>">En Proceso</p>
+                    <p class="gray text-center <?php echo $proceso; ?>">
+                        <?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'In Process'
+                            : 'En Proceso';?>
+                    </p>
                     <input type="text" class="hidden" value="">
                     <hr class="right">
                 </div>
                 <div class="col-sm-4 margin-top">
-                    <p class="gray text-center <?php echo $pausa; ?>">En Pausa</p>
+                    <p class="gray text-center <?php echo $pausa; ?>">
+                        <?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Paused'
+                            : 'En Pausa';?>
+                    </p>
                 </div>
                 <div class="col-sm-4 margin-top">
-                    <p class="gray text-center <?php echo $concluido; ?>">Concluido</p>
+                    <p class="gray text-center <?php echo $concluido; ?>">
+                        <?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Concluded'
+                            : 'Concluido';?>
+                    </p>
                     <hr class="left">
                 </div>
             </div>
             <div class="row">
-                <h3 class="table-header">Asunto</h3>
+                <h3 class="table-header"><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Subject' : 'Asunto';?></h3>
                 <table class="followUp-table-view" style="width: 100%;">
                     <tbody>
                         <tr>
@@ -55,15 +67,15 @@ switch( $follow_ups->status_id ) {
                         </tr>
                     </tbody>
                 </table>
-                <h3 class="table-header">Información del Solicitante</h3>
+                <h3 class="table-header"><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Solicitor\'s Information' : 'Información del Solicitante';?></h3>
                 <table class="followUp-table-view" style="width: 100%">
                     <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Razón Social</th>
-                            <th>Fecha de Nacimiento</th>
-                            <th>Teléfono</th>
-                            <th>Correo Electrónico</th>
+                            <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Name' : 'Nombre';?></th>
+                            <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Business Name' : 'Razón Social';?></th>
+                            <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Birth Date' : 'Fecha de Nacimiento';?></th>
+                            <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Phone' : 'Teléfono';?></th>
+                            <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'E-mail' : 'Correo Electrónico';?></th>
                         </tr>
                     </thead>
                     <tbody class="text">
@@ -76,14 +88,14 @@ switch( $follow_ups->status_id ) {
                         </tr>
                     </tbody>
                 </table>
-                <h3 class="table-header">Domicilio del Solicitante</h3>
+                <h3 class="table-header"><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Solicitor\'s Adress' : 'Domicilio del Solicitante';?></h3>
                 <table class="followUp-table-view" style="width: 100%">
                     <thead>
                         <tr>
-                            <th>Calle</th>
-                            <th>Número Exterior</th>
-                            <th>Número Interior</th>
-                            <th>Código Postal</th>
+                            <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Street' : 'Calle';?></th>
+                            <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Exterior Number' : 'Número Exterior';?></th>
+                            <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Interior Number' : 'Número Interior';?></th>
+                            <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Postal Code' : 'Código Postal';?></th>
                         </tr>
                     </thead>
                     <tbody class="text">
@@ -98,11 +110,11 @@ switch( $follow_ups->status_id ) {
                 <table class="followUp-table-view" style="width: 100%">
                     <thead>
                         <tr>
-                            <th>Colonia</th>
-                            <th>Municipio</th>
-                            <th>Localidad</th>
-                            <th>Estado</th>
-                            <th>País</th>
+                            <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Suburb' : 'Colonia';?></th>
+                            <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Town' : 'Municipio';?></th>
+                            <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Locality' : 'Localidad';?></th>
+                            <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'State' : 'Estado';?></th>
+                            <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Country' : 'País';?></th>
                         </tr>
                     </thead>
                     <tbody class="text">
@@ -115,7 +127,7 @@ switch( $follow_ups->status_id ) {
                         </tr>
                     </tbody>
                 </table>
-                <h3 class="table-header">Información Adicional</h3>
+                <h3 class="table-header"><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Additional Information' : 'Información Adicional';?></h3>
                 <table class="followUp-table-view" style="width: 100%;">
                     <colgroup>
                         <col style="width: 50%;">
