@@ -32,7 +32,7 @@ if(isset($_POST['acceptLang'])) {
 } else if(!isset($_COOKIE['lang'])) {
         session_start();
         $_SESSION['lang'] = 'es';
-        $_SESSION['loadModal'] = true;
+        $_SESSION['loadModal'] = false;
 }
 
 if(isset($_POST['change_es'])) {

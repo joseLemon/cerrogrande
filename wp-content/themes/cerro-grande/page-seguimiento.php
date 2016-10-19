@@ -33,13 +33,13 @@ switch( $follow_ups->status_id ) {
         <div class="form-container active spacing">
             <h1 class="header blue text-center">
                 <?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Application Status'
-                    : 'Seguimiento';?>
+    : 'Seguimiento';?>
             </h1>
             <div class="row text-center margin-bottom followUp-status">
                 <div class="col-sm-4 margin-top">
                     <p class="gray text-center <?php echo $proceso; ?>">
                         <?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'In Process'
-                            : 'En Proceso';?>
+    : 'En Proceso';?>
                     </p>
                     <input type="text" class="hidden" value="">
                     <hr class="right">
@@ -47,13 +47,13 @@ switch( $follow_ups->status_id ) {
                 <div class="col-sm-4 margin-top">
                     <p class="gray text-center <?php echo $pausa; ?>">
                         <?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Paused'
-                            : 'En Pausa';?>
+    : 'En Pausa';?>
                     </p>
                 </div>
                 <div class="col-sm-4 margin-top">
                     <p class="gray text-center <?php echo $concluido; ?>">
                         <?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Concluded'
-                            : 'Concluido';?>
+    : 'Concluido';?>
                     </p>
                     <hr class="left">
                 </div>
@@ -141,7 +141,11 @@ switch( $follow_ups->status_id ) {
                                 <?php
                                 $pdf_file = get_template_directory_uri().'/file_uploads/'.$follow_up_id.'.pdf';
                                 if(pdf_exists($pdf_file)) {
-                                    echo '<a href="'.$pdf_file.'" target="_blank">Ver PDF</a>';
+                                    if(isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en') {
+                                        echo '<a href="'.$pdf_file.'" target="_blank">See PDF</a>';
+                                    } else {
+                                        echo '<a href="'.$pdf_file.'" target="_blank">Ver PDF</a>';
+                                    }
                                 }
                                 ?>
                             </td>
