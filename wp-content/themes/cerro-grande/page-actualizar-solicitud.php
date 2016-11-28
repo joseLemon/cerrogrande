@@ -179,167 +179,204 @@ switch( $follow_up->status_id ) {
         break;
 }
 ?>
-<form action="<?php echo home_url().'/submitsolicitor/?id='.$ID;?>" method="post" enctype="multipart/form-data" id="updateForm">
-    <input type="hidden" value="<?php echo($ID)?>" name="follow_up_id" id="follow_up_id">
-    <div class="wrapper seguimiento spacing">
-        <div class="container">
-            <div name="error" id="error" class="alert alert-danger hidden"></div>
-            <div class="form-container active">
-                <div class="light-spacing">
-                    <h1 class="header blue text-center">Seguimiento</h1>
-                    <div class="row no-margin">
-                        <h3 class="table-header">Información del Solicitante</h3>
-                        <table class="followUp-table-view" style="width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Apellido Paterno</th>
-                                    <th>Apellido Materno</th>
-                                    <th>Asunto</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text">
-                                <tr>
-                                    <td><input type="text" name="solicitor_name" id="solicitor_name" value="<?php echo $follow_up->solicitor_name; ?>"></td>
-                                    <td><input type="text" name="last_name" id="last_name" value="<?php echo $follow_up->last_name; ?>"></td>
-                                    <td><input type="text" name="m_last_name" id="m_last_name" value="<?php echo $follow_up->m_last_name; ?>"></td>
-                                    <td><input type="text" name="subject" id="subject" value="<?php echo $follow_up->subject; ?>"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table class="followUp-table-view" style="width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th>Razón Social</th>
-                                    <th>Fecha de Nacimiento</th>
-                                    <th>Teléfono</th>
-                                    <th>Correo Electrónico</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text">
-                                <tr>
-                                    <td><input type="text" name="social" id="social" value="<?php echo $follow_up->social_reason; ?>"></td>
-                                    <td><input type="text" name="date" id="date" value="<?php echo date('d/m/Y',strtotime($follow_up->birthday)); ?>"></td>
-                                    <td><input type="text" name="phone" id="phone" value="<?php echo $follow_up->phone; ?>"></td>
-                                    <td><input type="text" name="email" id="email" value="<?php echo $follow_up->email; ?>"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <h3 class="table-header">Domicilio del Solicitante</h3>
-                        <table class="followUp-table-view" style="width: 100%;">
-                            <colgroup>
-                                <col style="width: 20%">
-                                <col style="width: 20%">
-                                <col style="width: 20%">
-                                <col style="width: 20%">
-                                <col style="width: 20%">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>Calle</th>
-                                    <th>Número Exterior</th>
-                                    <th>Número Interior</th>
-                                    <th>Código Postal</th>
-                                    <th>Colonia</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text">
-                                <tr>
-                                    <td><input type="text" name="street" id="street" value="<?php echo $follow_up->street; ?>"></td>
-                                    <td><input type="text" name="exterior" id="exterior" value="<?php echo $follow_up->exterior_num; ?>"></td>
-                                    <td><input type="text" name="interior" id="interior" value="<?php echo $follow_up->interior_num; ?>"></td>
-                                    <td><input type="text" name="postal" id="postal" value="<?php echo $follow_up->postal_code; ?>"></td>
-                                    <td><input type="text" name="colony" id="colony" value="<?php echo $follow_up->colony; ?>"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table class="followUp-table-view" style="width: 100%;">
-                            <colgroup>
-                                <col style="width: 20%">
-                                <col style="width: 20%">
-                                <col style="width: 20%">
-                                <col style="width: 20%">
-                                <col style="width: 20%">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>Municipio</th>
-                                    <th>Localidad</th>
-                                    <th>Estado</th>
-                                    <th>País</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody class="text">
-                                <tr>
-                                    <td><input type="text" name="town" id="town" value="<?php echo $follow_up->town; ?>"></td>
-                                    <td><input type="text" name="locality" id="country" value="<?php echo $follow_up->locality; ?>"></td>
-                                    <td><input type="text" name="state" id="state" value="<?php echo $follow_up->state; ?>"></td>
-                                    <td><input type="text" name="country" value="<?php echo $follow_up->country; ?>"></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="row no-margin">
-                            <div class="col-sm-6" style="padding: 0;">
-                                <h3 class="table-header">Comentarios</h3>
-                                <textarea class="table-textarea" name="text" id="text" cols="30" rows="5" placeholder="Comentarios" maxlength="254"><?php echo $follow_up->comments; ?></textarea>
-                            </div>
-                            <div class="col-sm-6" style="padding: 0;">
-                                <h3 class="table-header">PDF</h3>
-                                <div class="table-cell">
-                                    <?php
-                                    $pdf_file = get_template_directory_uri().'/file_uploads/'.$ID.'.pdf';
-                                    if(pdf_exists($pdf_file)) {
-                                        echo '<a href="'.$pdf_file.'" class="center-block" target="_blank">Ver PDF</a>';
-                                    }
-                                    ?>
-                                    <label for="pdf_file">Cambiar PDF</label>
-                                    <input type="file" class="inputfile" name="pdf_file" id="pdf_file">
-                                    <label for="pdf_file"></label>
-                                    <input type="hidden" name="MAX_FILE_SIZE" value="25000000"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="row text-center margin-bottom followUp-status">
-                            <div class="col-sm-4 margin-top">
-                                <p class="gray text-center <?php echo $proceso; ?>">En Proceso</p>
-                                <input type="text" class="hidden" value="">
-                                <hr class="right">
-                            </div>
-                            <div class="col-sm-4 margin-top">
-                                <p class="gray text-center <?php echo $pausa; ?>">En Pausa</p>
-                            </div>
-                            <div class="col-sm-4 margin-top">
-                                <p class="gray text-center <?php echo $concluido; ?>">Concluido</p>
-                                <hr class="left">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3" style="padding-left: 0; padding-right: 0;">
-                        <select name="status" id="status">
-                            <?php
-                            $statuses = $wpdb->get_results("SELECT status_id, name FROM statuses");
-                            foreach( $statuses as $status ) {
-                                if( $status->status_id==$follow_up->status_id ) {
-                            ?>
-                            <option value="<?php echo $status->status_id ?>" selected><?php echo $status->name ?></option>
-                            <?php   }else{ ?>
-                            <option value="<?php echo $status->status_id ?>"><?php echo $status->name ?></option>
-                            <?php   }
-                            }
-                            ?>
-                        </select>
+    <div class="spacing">
+        <form action="<?php echo home_url().'/submitsolicitor/?id='.$ID;?>" method="post" enctype="multipart/form-data" id="updateForm">
+            <input type="hidden" value="<?php echo($ID)?>" name="follow_up_id" id="follow_up_id">
+            <div class="wrapper seguimiento">
+                <div class="container light-spacing" style="padding-bottom: 0px;">
+                    <div class="nav-btns" style="padding: 0 50px;">
+                        <a class="btn btn-primary" href="<?php echo home_url().'/';?>lista-seguimientos">&larr; ATRÁS</a>
+                        <button class="btn btn-warning pull-right" id="edit-form">EDITAR</button>
                     </div>
                     <div class="clearfix"></div>
-                    <div class="text-center actualizar-solicitud">
-                        <input class="green-btn white" type="submit" name="update" id="update" value="Actualizar">
+                    <div name="error" id="error" class="alert alert-danger hidden"></div>
+                    <div class="form-container active">
+                        <div class="light-spacing" style="padding-top: 0; padding-bottom: 0;">
+                            <h1 class="header blue text-center">Seguimiento</h1>
+                            <div class="row no-margin">
+                                <h3 class="table-header">Información del Solicitante</h3>
+                                <table class="followUp-table-view" style="width: 100%;">
+                                    <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellido Paterno</th>
+                                        <th>Apellido Materno</th>
+                                        <th>Asunto</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="text">
+                                    <tr>
+                                        <td><input type="text" name="solicitor_name" id="solicitor_name" value="<?php echo $follow_up->solicitor_name; ?>" disabled></td>
+                                        <td><input type="text" name="last_name" id="last_name" value="<?php echo $follow_up->last_name; ?>" disabled></td>
+                                        <td><input type="text" name="m_last_name" id="m_last_name" value="<?php echo $follow_up->m_last_name; ?>" disabled></td>
+                                        <td><input type="text" name="subject" id="subject" value="<?php echo $follow_up->subject; ?>" disabled></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="followUp-table-view" style="width: 100%;">
+                                    <thead>
+                                    <tr>
+                                        <th>Razón Social</th>
+                                        <th>Fecha de Nacimiento</th>
+                                        <th>Teléfono</th>
+                                        <th>Correo Electrónico</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="text">
+                                    <tr>
+                                        <td><input type="text" name="social" id="social" value="<?php echo $follow_up->social_reason; ?>" disabled disabled></td>
+                                        <td><input type="text" name="date" id="date" value="<?php echo date('d/m/Y',strtotime($follow_up->birthday)); ?>" disabled disabled></td>
+                                        <td><input type="text" name="phone" id="phone" value="<?php echo $follow_up->phone; ?>" disabled disabled></td>
+                                        <td><input type="text" name="email" id="email" value="<?php echo $follow_up->email; ?>" disabled disabled></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <h3 class="table-header">Domicilio del Solicitante</h3>
+                                <table class="followUp-table-view" style="width: 100%;">
+                                    <colgroup>
+                                        <col style="width: 20%">
+                                        <col style="width: 20%">
+                                        <col style="width: 20%">
+                                        <col style="width: 20%">
+                                        <col style="width: 20%">
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th>Calle</th>
+                                        <th>Número Exterior</th>
+                                        <th>Número Interior</th>
+                                        <th>Código Postal</th>
+                                        <th>Colonia</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="text">
+                                    <tr>
+                                        <td><input type="text" name="street" id="street" value="<?php echo $follow_up->street; ?>" disabled></td>
+                                        <td><input type="text" name="exterior" id="exterior" value="<?php echo $follow_up->exterior_num; ?>" disabled></td>
+                                        <td><input type="text" name="interior" id="interior" value="<?php echo $follow_up->interior_num; ?>" disabled></td>
+                                        <td><input type="text" name="postal" id="postal" value="<?php echo $follow_up->postal_code; ?>" disabled></td>
+                                        <td><input type="text" name="colony" id="colony" value="<?php echo $follow_up->colony; ?>" disabled></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <table class="followUp-table-view" style="width: 100%;">
+                                    <colgroup>
+                                        <col style="width: 20%">
+                                        <col style="width: 20%">
+                                        <col style="width: 20%">
+                                        <col style="width: 20%">
+                                        <col style="width: 20%">
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th>Municipio</th>
+                                        <th>Localidad</th>
+                                        <th>Estado</th>
+                                        <th>País</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="text">
+                                    <tr>
+                                        <td><input type="text" name="town" id="town" value="<?php echo $follow_up->town; ?>" disabled></td>
+                                        <td><input type="text" name="locality" id="country" value="<?php echo $follow_up->locality; ?>" disabled></td>
+                                        <td><input type="text" name="state" id="state" value="<?php echo $follow_up->state; ?>" disabled></td>
+                                        <td><input type="text" name="country" value="<?php echo $follow_up->country; ?>" disabled></td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="row no-margin">
+                                    <div class="col-sm-6" style="padding: 0;">
+                                        <h3 class="table-header">Comentarios</h3>
+                                        <textarea class="table-textarea" name="text" id="text" cols="30" rows="5" placeholder="Comentarios" maxlength="254" disabled><?php echo $follow_up->comments; ?></textarea>
+                                    </div>
+                                    <div class="col-sm-6" style="padding: 0;">
+                                        <h3 class="table-header">PDF</h3>
+                                        <div class="table-cell pdf-container">
+                                            <?php
+                                            $pdf_file_template = get_template_directory_uri().'/file_uploads/'.$ID;
+                                            for ($i = 0; $i < 3; $i++) {
+                                                if(pdf_exists($pdf_file_template.'-'.$i.'.pdf')) {
+                                                    echo '<a style="display: inline-block;" href="'.$pdf_file_template.'-'.$i.'.pdf'.'" class="center-block" target="_blank">Ver PDF #'.($i+1).'</a>
+                                        <div style="display: inline-block; cursor: pointer;" class="delete-file" data-file="'.$ID.'-'.$i.'.pdf'.'"><span class="glyphicon glyphicon-remove"></span></div><br>';
+                                                }
+                                            }
+                                            ?>
+                                            <label for="pdf_file">Cambiar PDF</label>
+                                            <input type="file" class="inputfile" name="pdf_file[]" id="pdf_file" multiple>
+                                            <label for="pdf_file"></label>
+                                            <input type="hidden" name="MAX_FILE_SIZE" value="25000000"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="row text-center margin-bottom followUp-status">
+                                    <div class="col-sm-4 margin-top">
+                                        <p class="gray text-center <?php echo $proceso; ?>">En Proceso</p>
+                                        <input type="text" class="hidden" value="">
+                                        <hr class="right">
+                                    </div>
+                                    <div class="col-sm-4 margin-top">
+                                        <p class="gray text-center <?php echo $pausa; ?>">En Pausa</p>
+                                    </div>
+                                    <div class="col-sm-4 margin-top">
+                                        <p class="gray text-center <?php echo $concluido; ?>">Concluido</p>
+                                        <hr class="left">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3" style="padding-left: 0; padding-right: 0;">
+                                <select name="status" id="status">
+                                    <?php
+                                    $statuses = $wpdb->get_results("SELECT status_id, name FROM statuses");
+                                    foreach( $statuses as $status ) {
+                                        if( $status->status_id==$follow_up->status_id ) {
+                                            ?>
+                                            <option value="<?php echo $status->status_id ?>" selected><?php echo $status->name ?></option>
+                                        <?php   }else{ ?>
+                                            <option value="<?php echo $status->status_id ?>"><?php echo $status->name ?></option>
+                                        <?php   }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="text-center actualizar-solicitud">
+                                <input class="green-btn white" type="submit" name="update" id="update" value="Actualizar">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </form>
+        <form action="<?php echo home_url().'/submitsolicitor/?id='.$ID;?>" method="post"" id="deleteForm">
+        <div class="text-center form-container" style="display: block; min-height: 0;">
+            <input class="btn btn-danger" style="font-size: 21px;" type="submit" name="delete" id="delete" value="Eliminar">
         </div>
+        </form>
     </div>
-</form>
+
+    <script>
+        $('#edit-form').click(function (e) {
+            e.preventDefault();
+            $('input textarea').removeAttr('disabled');
+        });
+
+
+        $('.delete-file').click(function() {
+            console.log('click');
+            $.ajax({
+                type: "POST",
+                url: "<?php echo home_url().'/submitsolicitor/?id='.$ID ?>",
+                data: { file_delete: $(this).data('file') }
+            }).done(function( msg ) {
+                alert( "Eliminado Exitosamente");
+                location.reload();
+            });
+
+        });
+    </script>
+
 <?php include('footer.php'); ?>

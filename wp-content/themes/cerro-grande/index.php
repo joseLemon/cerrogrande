@@ -570,6 +570,20 @@
                         }
                         wp_login_form( $args );
                         ?>
+                        <div class="clearfix"></div>
+                        <a href="#forgot-password" data-toggle="collapse" data-target="#forgot-password"><?php echo $lost_pass; ?></a>
+                        <div id="forgot-password" class="collapse">
+                            <form name="lostpasswordform" id="lostpasswordform" action="<?php echo wp_lostpassword_url(); ?>" method="post">
+                                <p>
+                                    <label><?php echo $pass_recover; ?></label>
+                                    <input type="text" name="user_login" id="user_login" class="input" value="" size="20" tabindex="10">
+                                    <input type="hidden" name="redirect_to" value="<?php echo $redirect ?>">
+                                </p>
+                                <div class="text-right">
+                                    <input type="submit" name="wp-submit" id="wp-submit" class="button-primary" value="<?php echo $send; ?>" tabindex="100">
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

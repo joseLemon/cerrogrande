@@ -185,6 +185,7 @@ h3.heading {
 .followUp-table td,
 .followUp-table-view th {
     padding: 5px;
+    font-size: 16.5px;
 }
 
 .followUp-table .email,
@@ -230,7 +231,8 @@ h3.heading {
 .table-cell {
     border: 1px solid #626262;
     border-top: 0;
-    height: 120px;
+    height: 170px;
+    font-size: 16.5px!important;
 }
 
 .table-textarea {
@@ -238,13 +240,14 @@ h3.heading {
     border: 1px solid #626262;
     border-top: 0;
     resize: none;
-    height: 120px;
+    height: 170px;
     width: 100%;
     border-right: 0;
     padding-left: 15px;
     outline: none;
     color: #000!important;
     font-weight: 600;
+    font-size: 16.5px;
 }
 
 .followUp-table th:first-child {
@@ -279,12 +282,14 @@ h3.heading {
 
 .followUp-table a {
     color: #a32017;
+    font-size: 16.5px!important;
 }
 
 .followUp-table-view th,
 .followUp-table-view td  {
     border-left: 1px solid #626262;
     border-right: 1px solid #626262;
+    font-size: 16.5px;
 }
 
 .followUp-table-view th {
@@ -321,6 +326,15 @@ h3.heading {
 .login-modal .login-remember,
 .login-modal .login-submit {
     text-align: right;
+}
+
+.login-remember {
+    float: left;
+}
+
+.login-submit {
+    display: inline-block;
+    float: right;
 }
 
 .main-nav li.flag {
@@ -1431,7 +1445,7 @@ footer {
     line-height: 46px;
 }
 
-.small-btn, #respond input[type=submit], .button.alt, .login-submit #wp-submit {
+.small-btn, #respond input[type=submit], .button.alt, .login-modal input[name=wp-submit] {
     height: 62px;
     width: 128px;
     border-radius: 10px;
@@ -1498,19 +1512,28 @@ footer {
     margin-bottom: 30px;
 }
 
+.registro form {
+    font-family: 'AllerLight', sans-serif;
+    font-size: 16px;
+}
+
 .registro hr {
     border-top: 1px solid #626262;
 }
 
-.registro input[type=text], .registro input[type=email]
+.registro input[type=text], .registro input[type=email],
 .registro input[type=tel], .registro textarea, .select2,
-.modal select, .registro select {
+.modal select, .registro select, .registro input[type=password] {
     width: 100%;
     padding-left: 15px;
     outline: none;
     border: 1px solid #626262;
     min-height: 60px;
     font-weight: 600;
+}
+
+.registro-usuario {
+    display: block!important;
 }
 
 .select2 {

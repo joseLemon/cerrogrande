@@ -3,7 +3,13 @@ add_theme_support( 'post-thumbnails' );
 register_sidebar(array( 'name' => 'Blog','id' => 'blog','description' => "Blog sidebar", 'before_widget' => '<div id="%1$s" class="widget %2$s">','after_widget' => '</div>','before_title' => '<h3>','after_title' => '</h3>'));
 
 function login_redirect( $redirect_to, $request, $user  ) {
-    return ( is_array( $user->roles ) && in_array( 'administrator', $user->roles ) ) ? 'lista-seguimientos' : 'mi-cuenta';
+    if ( is_array( $user->roles ) && in_array( 'administrator', $user->roles ) ) {
+        return 'lista-seguimientos';
+    } else if ( is_array( $user->roles ) && in_array( 'editor', $user->roles ) ) {
+        return 'registro-usuario';
+    } else {
+        return 'mi-cuenta';
+    }
 }
 add_filter( 'login_redirect', 'login_redirect', 10, 3 );
 
@@ -32,7 +38,7 @@ if(isset($_POST['acceptLang'])) {
 } else if(!isset($_COOKIE['lang'])) {
         session_start();
         $_SESSION['lang'] = 'es';
-        $_SESSION['loadModal'] = true;
+        $_SESSION['loadModal'] = false;
 }
 
 if(isset($_POST['change_es'])) {
@@ -58,6 +64,9 @@ if(isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) {
     $cuenta = 'My account';
     $solicitudes = 'Mis applications';
     $logout = 'Log out';
+    $lost_pass = 'Forgot your password?';
+    $pass_recover = 'Email or Username:';
+    $send = 'Send';
 } else {
     $laFirma = 'La Firma';
     $pilares = 'Pilares y Políticas';
@@ -73,5 +82,8 @@ if(isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ) {
     $cuenta = 'Mi cuenta';
     $solicitudes = 'Mis solicitudes';
     $logout = 'Cerrar sesión';
+    $lost_pass = 'Olvidé mi contraseña';
+    $pass_recover = 'Nombre de Usuario o Correo Electrónico:';
+    $send = 'Enviar';
 }
 ?>

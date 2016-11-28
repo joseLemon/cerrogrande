@@ -17,7 +17,6 @@ $(document).ready(function(){
 });
 
 $('input[type=file]').bind('change', function() {
-    console.log('change');
     //this.files[0].size gets the size of your file.
     if ( this.files[0].size > 25000000 ) {
         alert('La imagen no puede pesar más de 25Mb. Intenta una imagen más ligera.');
@@ -70,14 +69,14 @@ function validateOne(){
     if( social == null || social.length == 0 || /^\s+$/.test(social) ) {
         errors += "La razón social es obligatoria<br>";
     }
-    if( date == null || date.length == 0 || /^\s+$/.test(date) ) {
+    /*if( date == null || date.length == 0 || /^\s+$/.test(date) ) {
         errors += "La fecha de nacimiento es obligatoria<br>";
-    } else {
-        var regExPattern = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
-        if (!(date.match(regExPattern))) {
-            errors += "Introduce una fecha de nacimiento en formato correcto<br>";
-        }
+    } else {*/
+    var regExPattern = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
+    if (!(date.match(regExPattern)) && date != '') {
+        errors += "Introduce una fecha de nacimiento en formato correcto<br>";
     }
+    //}
     if( phone == null || phone.length == 0 || /^\s+$/.test(phone) ) {
         errors += "El teléfono es obligatorio<br>";
     } else{

@@ -2,7 +2,7 @@
 <?php
 $current_user = wp_get_current_user();
 $ID = $current_user->ID;
-$follow_ups = $wpdb->get_results("SELECT follow_up_id, subject, social_reason, solicitor_name, last_name, name AS status_name FROM follow_ups JOIN statuses ON statuses.status_id = follow_ups.status_id WHERE user_id =".$ID);
+$follow_ups = $wpdb->get_results("SELECT follow_up_id, subject, social_reason, solicitor_name, last_name, name AS status_name FROM follow_ups JOIN statuses ON statuses.status_id = follow_ups.status_id WHERE deleted_at IS NULL AND user_id =".$ID);
 $statuses = $wpdb->get_results("SELECT * FROM statuses");
 if($current_user->user_firstname != '') {
     $name = $current_user->user_firstname;

@@ -76,7 +76,7 @@
                         </div>
                         <div class="col-sm-2 ">
                             <label for="state">Estado</label>
-                            <select name="state" id="state">
+                            <!--<select name="state" id="state">
                                 <option value="Aguascalientes">Aguascalientes</option>
                                 <option value="Baja California">Baja California</option>
                                 <option value="Baja California Sur">Baja California Sur</option>
@@ -162,14 +162,16 @@
                                 <option value="West Virginia">West Virginia</option>
                                 <option value="Wisconsin">Wisconsin</option>
                                 <option value="Wyoming">Wyoming</option>
-                            </select>
+                            </select>-->
+                            <input type="text" id="state" name="state">
                         </div>
                         <div class="col-sm-2 ">
                             <label for="country">País</label>
-                            <select id="country" name="country">
+                            <!--<select id="country" name="country">
                                 <option value="México">México</option>
                                 <option value="USA">USA</option>
-                            </select>
+                            </select>-->
+                            <input type="text" id="country" name="country">
                         </div>
                     </div>
                     <div class="row">
@@ -179,7 +181,7 @@
                         </div>
                         <div class="col-sm-6">
                             <label for="pdf_file">PDF</label>
-                            <input type="file" class="inputfile" name="pdf_file" id="pdf_file">
+                            <input type="file" class="inputfile" name="pdf_file[]" id="pdf_file">
                             <label for="pdf_file"></label>
                             <input type="hidden" name="MAX_FILE_SIZE" value="25000000"/>
                         </div>
@@ -192,6 +194,6 @@
         </div>
     </div>
     <script>
-        $('#user).select2();
+        $('#user').select2();
     </script>
 <?php get_footer(); ?>
