@@ -66,7 +66,12 @@ if($current_user->user_firstname != '') {
                                     <td><?php echo $follow_up->subject ?></td>
                                     <td><?php echo $follow_up->social_reason ?></td>
                                     <td><?php echo $follow_up->solicitor_name.' '.$follow_up->last_name ?></td>
-                                    <td><?php echo $follow_up->status_name ?></td>
+                                    <td>
+                                        <?php
+                                            isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en'
+                                            echo $follow_up->status_name
+                                        ?>
+                                    </td>
                                     <td>
                                         <a class="center-block" href="<?php echo home_url() . '/seguimiento/?id=' . $follow_up->follow_up_id; ?>">
                                             <?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'See more' : 'Ver Segumiento';?>
