@@ -351,7 +351,7 @@ switch( $follow_up->status_id ) {
                 </div>
             </div>
         </form>
-        <form action="<?php echo home_url().'/submitsolicitor/?id='.$ID;?>" method="post"" id="deleteForm">
+        <form action="<?php echo home_url().'/submitsolicitor/?id='.$ID;?>" method="post" id="deleteForm">
         <div class="text-center form-container" style="display: block; min-height: 0;">
             <input class="btn btn-danger" style="font-size: 21px;" type="submit" name="delete" id="delete" value="Eliminar">
         </div>
@@ -361,7 +361,7 @@ switch( $follow_up->status_id ) {
     <script>
         $('#edit-form').click(function (e) {
             e.preventDefault();
-            $('input textarea').removeAttr('disabled');
+            $('input, textarea').removeAttr('disabled');
         });
 
 

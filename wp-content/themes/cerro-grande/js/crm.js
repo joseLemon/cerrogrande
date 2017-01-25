@@ -42,13 +42,13 @@ function validateOne(){
     town = document.getElementById("town").value;
     country = document.getElementById("country").value;
 
-    if( name == null || name.length == 0 || /^\s+$/.test(name) ) {
+    /*if( name == null || name.length == 0 || /^\s+$/.test(name) ) {
         errors += "El nombre es obligatorio<br>";
-    } else {
+    } else {*/
         if(name.length > 35){
             errors += "El numero de letras máximo para el nombre es de 35<br>";
         }
-    }
+    //}
     if( subject == null || subject.length == 0 || /^\s+$/.test(name) ) {
         errors += "El asunto es obligatorio<br>";
     } else {
@@ -56,19 +56,19 @@ function validateOne(){
             errors += "El numero de letras máximo para el asunto es de 140<br>";
         }
     }
-    if( lastName == null || lastName.length == 0 || /^\s+$/.test(lastName) ) {
+    /*if( lastName == null || lastName.length == 0 || /^\s+$/.test(lastName) ) {
         errors += "El apellido paterno es obligatorio<br>";
-    } else {
+    } else {*/
         if(lastName.length > 35){
             errors += "El numero de letras máximo para el Apellido es de 35<br>";
         }
-    }
+    //}
     if(mLastName.length > 35){
         errors += "El numero de letras máximo para el Apellido materno es de 35<br>";
     }
-    if( social == null || social.length == 0 || /^\s+$/.test(social) ) {
+    /*if( social == null || social.length == 0 || /^\s+$/.test(social) ) {
         errors += "La razón social es obligatoria<br>";
-    }
+    }*/
     /*if( date == null || date.length == 0 || /^\s+$/.test(date) ) {
         errors += "La fecha de nacimiento es obligatoria<br>";
     } else {*/

@@ -31,7 +31,7 @@ if($current_user->user_firstname != '') {
                         </h1>
                         <h2 class="blue text-center">
                             <?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Information about your applications.'
-                                : 'Datos de tus Solicitudes.';?>
+                                : 'Información de tus asuntos.';?>
                         </h2>
                         <div class="col-sm-4"></div>
                     </div>
@@ -49,8 +49,6 @@ if($current_user->user_firstname != '') {
                             <tr>
                                 <th></th>
                                 <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Subject' : 'Asunto';?></th>
-                                <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Business Name' : 'Razón Social';?></th>
-                                <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Name' : 'Nombre';?></th>
                                 <th><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Status' : 'Estatus';?></th>
                                 <th></th>
                             </tr>
@@ -63,18 +61,15 @@ if($current_user->user_firstname != '') {
                                 ?>
                                 <tr>
                                     <td class="text-center" style="padding-left: 5px;"><?php echo $counter; ?></td>
-                                    <td><?php echo $follow_up->subject ?></td>
-                                    <td><?php echo $follow_up->social_reason ?></td>
-                                    <td><?php echo $follow_up->solicitor_name.' '.$follow_up->last_name ?></td>
+                                    <td><?php echo $follow_up->subject; ?></td>
                                     <td>
-                                        <?php
-                                            isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en'
-                                            echo $follow_up->status_name
-                                        ?>
+                                       <span style="text-shadow: .5px 0px .5px;">
+                                        <?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? $follow_up->status_name : $follow_up->status_name; ?>
+                                        </span>
                                     </td>
                                     <td>
                                         <a class="center-block" href="<?php echo home_url() . '/seguimiento/?id=' . $follow_up->follow_up_id; ?>">
-                                            <?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'See more' : 'Ver Segumiento';?>
+                                            <?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'See details' : 'Ver Detalles';?>
                                         </a>
                                     </td>
                                 </tr>

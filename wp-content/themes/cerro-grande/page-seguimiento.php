@@ -32,8 +32,9 @@ switch( $follow_ups->status_id ) {
         <div class="container">
             <div class="form-container active spacing">
                 <h1 class="header blue text-center">
-                    <?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Application Status'
-                        : 'Seguimiento';?>
+                    <!--<?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Application Status'
+                        : 'Seguimiento';?>-->
+                        <?php echo $follow_ups->subject; ?>
                 </h1>
                 <div class="row text-center margin-bottom followUp-status">
                     <div class="col-sm-4 margin-top">
@@ -59,7 +60,7 @@ switch( $follow_ups->status_id ) {
                     </div>
                 </div>
                 <div class="row">
-                    <h3 class="table-header"><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Subject' : 'Asunto';?></h3>
+                    <!--<h3 class="table-header"><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Subject' : 'Asunto';?></h3>
                     <table class="followUp-table-view" style="width: 100%;">
                         <tbody>
                         <tr>
@@ -126,7 +127,7 @@ switch( $follow_ups->status_id ) {
                             <td><?php echo $follow_ups->country; ?></td>
                         </tr>
                         </tbody>
-                    </table>
+                    </table>-->
                     <h3 class="table-header"><?php echo isset($_COOKIE['lang']) && $_COOKIE['lang'] == 'en' ? 'Additional Information' : 'Información Adicional';?></h3>
                     <table class="followUp-table-view" style="width: 100%;">
                         <colgroup>
