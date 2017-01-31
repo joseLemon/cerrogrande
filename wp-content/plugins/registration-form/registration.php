@@ -303,6 +303,11 @@ function send_welcome_email($email, $user, $password, $firstname) {
            <table style="padding-top: 100px;padding-bottom: 100px;margin: 0 auto;background: #fff;border-radius: 5px;width: 600px; border: 1px solid #e3e3e3; text-align: center;">
                <tbody>
                <tr>
+                   <td style="margin: 0 auto;text-align: center;height: auto;display: block;padding: 5px 5px 30px 5px;">
+                       <img src="'.get_bloginfo('template_url').'/img/logo-inverted.png" alt="CERRO GRANDE CORPORATIVO" style="max-width: 320px;">
+                   </td>
+               </tr>
+               <tr>
                    <td style="margin: 0 auto;text-align: center;height: auto;display: block;padding: 5px;">
                        <h1 style="color: #333;font-family: sans-serif;position: relative;bottom: 0%;margin: 0;font-weight:500;">¡Hola '.$firstname.'!</h1>
                    </td>

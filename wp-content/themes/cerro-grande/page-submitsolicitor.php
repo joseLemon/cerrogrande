@@ -103,7 +103,7 @@ if(isset($_POST['create']) || isset($_POST['delete'])) {
 if(isset($_POST['update'])) {
     $follow_up = $wpdb->get_results("SELECT * FROM follow_ups WHERE follow_up_id =".$follow_up_id)[0];
     $status = $wpdb->get_results("SELECT statuses.name FROM statuses WHERE status_id = ".$follow_up->status_id)[0]->name;
-    echo sendMail($follow_up,$status);
+    sendMail($follow_up,$status);
     wp_redirect('actualizar-solicitud/?id='.$follow_up_id);
 }
 
@@ -188,6 +188,11 @@ function sendMail($follow_up,$status) {
     $message = '
            <table style="padding-top: 100px;padding-bottom: 100px;margin: 0 auto;background: #fff;border-radius: 5px;width: 600px; border: 1px solid #e3e3e3; text-align: center;">
                <tbody>
+               <tr>
+                   <td style="margin: 0 auto;text-align: center;height: auto;display: block;padding: 5px 5px 30px 5px;">
+                       <img src="'.get_bloginfo('template_url').'/img/logo-inverted.png" alt="CERRO GRANDE CORPORATIVO" style="max-width: 320px;">
+                   </td>
+               </tr>
                <tr>
                    <td style="margin: 0 auto;text-align: center;height: auto;display: block;padding: 5px;">
                        <h1 style="color: #333;font-family: sans-serif;position: relative;bottom: 0%;margin: 0;font-weight:500;">Hola '.$follow_up->solicitor_name.'</h1>
